@@ -5,41 +5,493 @@
     <meta charset="utf-8">
 
     <style>
-      pre {
+      /* "global" css for this file */
+      pre, div p {
         text-indent: 25px;
       }
+
+      .note {
+        font-style: italic;
+      }
+
+      .property {
+        text-decoration: underline;
+      }
+
+      .align .outer, .align .inner,
+      .justify .outer, .justify .inner,
+      .margin .outer, .margin .inner,
+      .padding .outer, .padding .inner {
+        border: 1px solid black;
+      }
+
+      .align .outer {
+        width: 100px;
+        height: 200px;
+        background: #5585d0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .align .inner {
+        background: #637cc6;
+        height: 30px;
+        width: 30px;
+      }
+
+      .justify .outer {
+        width: 200px;
+        height: 50px;
+        background: #55d0a1;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .justify .inner {
+        background: #c6637b;
+        height: 30px;
+        width: 30px;
+      }
+
+      .margin .outer {
+        background: #63adc6;
+      }
+
+      .margin .inner {
+        background: #a7cd83;
+        height: 75px;
+        width: 75px;
+      }
+
+      .padding .outer {
+        background: #a7cd83;
+      }
+
+      .padding .inner {
+        background: #63adc6;
+        height: 75px;
+        width: 75px;
+      }
+
+      input[type='number'] {
+        border: 1px solid #ccc;
+      }
     </style>
+
+    <script>
+      function changeAlignContent(newVal) {
+        var el = document.querySelectorAll("#align-content .outer")[0];
+        el.style.alignContent = newVal;
+      }
+
+      function changeAlignItems(newVal) {
+        var el = document.querySelectorAll("#align-items .outer")[0];
+        el.style.alignItems = newVal;
+      }
+
+      function changeAlignSelf(newVal) {
+        var el = document.querySelectorAll("#align-self .inner.selected")[0];
+        el.style.alignSelf = newVal;
+      }
+
+      function changeJustifyContent(newVal) {
+        var el = document.querySelectorAll("#justify-content .outer")[0];
+        el.style.justifyContent = newVal;
+      }
+
+      function changeMarginBottom() {
+        var el = document.querySelectorAll("#margin-bottom .inner")[0];
+        var val = document.getElementById("margin-bottom-val").value;
+        el.style.marginBottom = val + "px";
+      }
+
+      function changeMarginRight() {
+        var el = document.querySelectorAll("#margin-right .inner")[0];
+        var val = document.getElementById("margin-right-val").value;
+        el.style.marginRight = val + "px";
+      }
+
+      function changeMarginLeft() {
+        var el = document.querySelectorAll("#margin-left .inner")[0];
+        var val = document.getElementById("margin-left-val").value;
+        el.style.marginLeft = val + "px";
+      }
+
+      function changeMargin() {
+        var el = document.querySelectorAll("#margin .inner")[0];
+        var val = document.getElementById("margin-val").value;
+        el.style.margin = val + "px";
+      }
+
+      function changeMarginTop() {
+        var el = document.querySelectorAll("#margin-top .inner")[0];
+        var val = document.getElementById("margin-top-val").value;
+        el.style.marginTop = val + "px";
+      }
+      function changePaddingBottom() {
+        var el = document.querySelectorAll("#padding-bottom .inner")[0];
+        var val = document.getElementById("padding-bottom-val").value;
+        el.style.paddingBottom = val + "px";
+      }
+
+      function changePaddingRight() {
+        var el = document.querySelectorAll("#padding-right .inner")[0];
+        var val = document.getElementById("padding-right-val").value;
+        el.style.paddingRight = val + "px";
+      }
+
+      function changePaddingLeft() {
+        var el = document.querySelectorAll("#padding-left .inner")[0];
+        var val = document.getElementById("padding-left-val").value;
+        el.style.paddingLeft = val + "px";
+      }
+
+      function changePaddingTop() {
+        var el = document.querySelectorAll("#padding-top .inner")[0];
+        var val = document.getElementById("padding-top-val").value;
+        el.style.paddingTop = val + "px";
+      }
+
+      function changePadding() {
+        var el = document.querySelectorAll("#padding .inner")[0];
+        var val = document.getElementById("padding-val").value;
+        el.style.padding = val + "px";
+      }
+
+      function changeTextAlignLast(newVal) {
+        var el = document.getElementById("text-align-last-ex");
+        el.style.textAlignLast = newVal;
+      }
+    </script>
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#align-content">align-content</a></li>
+      <li><a href="#align-items">align-items</a></li>
+      <li><a href="#align-self">align-self</a></li>
+      <li><a href="#justify-content">justify-content</a></li>
+      <li><a href="#margin-bottom">margin-bottom</a></li>
+      <li><a href="#margin-right">margin-right</a></li>
+      <li><a href="#margin-top">margin-top</a></li>
+      <li><a href="#margin">margin</a></li>
+      <li><a href="#margin-left">margin-left</a></li>
+      <li><a href="#padding-bottom">padding-bottom</a></li>
+      <li><a href="#padding-right">padding-right</a></li>
+      <li><a href="#padding-left">padding-left</a></li>
+      <li><a href="#padding-top">padding-top</a></li>
+      <li><a href="#padding">padding</a></li>
+      <li><a href="#text-align-last">text-align-last</a></li>
+      <li><a href="#"></a></li>
     </ol>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
+    <div id="align-content" class="align">
+      <h3 class="property">Align Content</h3>
+      <h3>Usage:</h3>
+      <pre>align-content: stretch | center | flex-start | flex-end | space-between | space-around | initial | inherit;</pre>
+      <p>This property modifies the VERTICAL spacing behavior of content on the page.</p>
+      <p class="note">Note: this property does NOT work on Internet Explorer (version 10 and below) or on Safari (version 6 and below)!</p>
+      <h3>Example:</h3>
+      align-content:
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('stretch')"/>stretch
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('center')"/>center
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('flex-start')"/>flex-start
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('flex-end')"/>flex-end
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('space-between')"/>space-between
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('space-around')"/>space-around
+      <input type="radio" name="align-content-opt" onclick="changeAlignContent('initial')" checked/>initial
+      <div class="outer">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+      </div>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
+    <style>
+      #align-items .inner.big {
+        height: 60px;
+      }
+
+      #align-items .inner.small {
+        height: 15px;
+      }
+    </style>
+    <div id="align-items" class="align">
+      <h3 class="property">Align Items</h3>
+      <h3>Usage:</h3>
+      <pre>align-items: stretch | center | flex-start | flex-end | baseline | initial | inherit;</pre>
+      <p>This property modifies the VERICAL spacing behavior of items on the page.</p>
+      <p class="note">Note: this property does NOT work on Internet Explorer (version 10 and below) or on Safari (version 6 and below)!</p>
+      <h3>Example:</h3>
+      align-items:
+      <input type="radio" name="align-items-opt" onclick="changeAlignItems('stretch')"/>stretch
+      <input type="radio" name="align-items-opt" onclick="changeAlignItems('center')"/>center
+      <input type="radio" name="align-items-opt" onclick="changeAlignItems('flex-start')"/>flex-start
+      <input type="radio" name="align-items-opt" onclick="changeAlignItems('flex-end')"/>flex-end
+      <input type="radio" name="align-items-opt" onclick="changeAlignItems('baseline')"/>baseline
+      <input type="radio" name="align-items-opt" onclick="changeAlignItems('initial')" checked/>initial
+      <div class="outer">
+        <div class="inner small"></div>
+        <div class="inner"></div>
+        <div class="inner big"></div>
+      </div>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
+    <style>
+      #align-self .inner.selected {
+        border: 1px solid red;
+        height: 15px;
+      }
+    </style>
+    <div id="align-self" class="align">
+      <h3 class="property">Align Self</h3>
+      <h3>Usage:</h3>
+      <pre>align-self: auto | stretch | center | flex-start | flex-end | baseline | initial | inherit;</pre>
+      <p>This property modifies the VERTICAL spacing behavior of a specific item on the page.</p>
+      <p class="note">Note: this property does NOT work on Internet Explorer (version 10 and below) or on Safari (version 6 and below)!</p>
+      <p class="note">Note: this property will override the container's align-items property!</p>
+      <h3>Example:</h3>
+      align-self:
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('auto')"/>auto
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('stretch')"/>stretch
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('center')"/>center
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('flex-start')"/>flex-start
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('flex-end')"/>flex-end
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('baseline')"/>baseline
+      <input type="radio" name="align-self-opt" onclick="changeAlignSelf('initial')" checked/>initial
+      <div class="outer">
+        <div class="inner"></div>
+        <div class="inner selected"></div>
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <style>
+      #justify-content .inner.big {
+        width: 60px;
+      }
+    </style>
+    <div id="justify-content" class="justify">
+      <h3 class="property">Justify Content</h3>
+      <h3>Usage:</h3>
+      <pre>justify-content: center | flex-start | flex-end | space-around | space-between | initial | inherit;</pre>
+      <p>This property modifies the HORIZONTAL spacing behavior of content on the page.</p>
+      <p class="note">Note: this property does NOT work on Internet Explorer (version 10 and below) or on Safari (version 6 and below)!</p>
+      <h3>Example:</h3>
+      justify-content:
+      <input type="radio" name="justify-content-opt" onclick="changeJustifyContent('center')"/>center
+      <input type="radio" name="justify-content-opt" onclick="changeJustifyContent('flex-start')"/>flex-start
+      <input type="radio" name="justify-content-opt" onclick="changeJustifyContent('flex-end')"/>flex-end
+      <input type="radio" name="justify-content-opt" onclick="changeJustifyContent('space-around')"/>space-around
+      <input type="radio" name="justify-content-opt" onclick="changeJustifyContent('space-between')"/>space-between
+      <input type="radio" name="justify-content-opt" onclick="changeJustifyContent('initial')" checked/>initial
+      <div class="outer">
+        <div class="inner"></div>
+        <div class="inner big"></div>
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="margin-bottom" class="margin">
+      <h3 class="property">Margin Bottom</h3>
+      <h3>Usage:</h3>
+      <pre>margin-bottom: length | auto | inherit | initial;</pre>
+      <p>This property sets the bottom spacing OUTSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the margin-bottom of the green box</p>
+      margin-bottom:
+      <input type="number" id="margin-bottom-val" onchange="changeMarginBottom()"/>px
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <style>
+      #margin-right .outer {
+        height: 77px;
+      }
+
+      #margin-right .inner {
+        float: right;
+      }
+    </style>
+    <div id="margin-right" class="margin">
+      <h3 class="property">Margin Right</h3>
+      <h3>Usage:</h3>
+      <pre>margin-right: length | auto | inherit | initial;</pre>
+      <p>This property sets the right-hand spacing OUTSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the margin-right of the green box</p>
+      margin-right:
+      <input type="number" id="margin-right-val" onchange="changeMarginRight()"/>px
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="margin-top" class="margin">
+      <h3 class="property">Margin Top</h3>
+      <h3>Usage:</h3>
+      <pre>margin-top: length | auto | inherit | initial;</pre>
+      <p>This property sets the top spacing OUTSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the margin-top of the green box</p>
+      margin-top:
+      <input type="number" id="margin-top-val" onchange="changeMarginTop()"/>px
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="margin" class="margin">
+      <h3 class="property">Margin</h3>
+      <h3>Usage:</h3>
+      <pre>margin: length | auto | inherit | initial;</pre>
+      <p>This property sets the spacing OUTSIDE the element.</p>
+      <p class="note">Providing [w] as the length will set w for margin on all sides.</p>
+      <p class="note">Providing [w x] as length will set w for top and bottom margins and x for left and right margins.</p>
+      <p class="note">Providing [w x y] as length will set w for top, x for left AND right, and y for bottom margins.</p>
+      <p class="note">Providing [w x y z] as length will set w for top, x for right, y for bottom, and z for left margins.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the margin of the green box</p>
+      margin:
+      <input type="number" id="margin-val" onchange="changeMargin()"/>px [all sides]<br>
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="margin-left" class="margin">
+      <h3 class="property">Margin Left</h3>
+      <h3>Usage:</h3>
+      <pre>margin-left: length | auto | inherit | initial;</pre>
+      <p>This property sets the left-hand spacing OUTSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the margin-left of the green box</p>
+      margin-top:
+      <input type="number" id="margin-left-val" onchange="changeMarginLeft()"/>px
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="padding-bottom" class="padding">
+      <h3 class="property">Padding Bottom</h3>
+      <h3>Usage:</h3>
+      <pre>padding-bottom: length | auto | inherit | initial;</pre>
+      <p>This property sets the bottom spacing INSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the padding-bottom of the green box</p>
+      padding-bottom:
+      <input type="number" id="padding-bottom-val" onchange="changePaddingBottom()"/>px
+      <div class="outer">
+        <div class="inner">HELLO WORLD, THIS IS A TEST</div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="padding-right" class="padding">
+      <h3 class="property">Padding Right</h3>
+      <h3>Usage:</h3>
+      <pre>padding-right: length | auto | inherit | initial;</pre>
+      <p>This property sets the right-hand spacing INSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the padding-right of the green box</p>
+      padding-right:
+      <input type="number" id="padding-right-val" onchange="changePaddingRight()"/>px
+      <div class="outer">
+        <div class="inner">HELLO WORLD, THIS IS A TEST</div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="padding-top" class="padding">
+      <h3 class="property">Padding Top</h3>
+      <h3>Usage:</h3>
+      <pre>padding-top: length | auto | inherit | initial;</pre>
+      <p>This property sets the top spacing INSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the padding-top of the green box</p>
+      padding-top:
+      <input type="number" id="padding-top-val" onchange="changePaddingTop()"/>px
+      <div class="outer">
+        <div class="inner">HELLO WORLD, THIS IS A TEST</div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="padding-left" class="padding">
+      <h3 class="property">Padding Left</h3>
+      <h3>Usage:</h3>
+      <pre>padding-left: length | auto | inherit | initial;</pre>
+      <p>This property sets the left-hand spacing INSIDE the element.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the padding-left of the green box</p>
+      padding-top:
+      <input type="number" id="padding-left-val" onchange="changePaddingLeft()"/>px
+      <div class="outer">
+        <div class="inner">HELLO WORLD, THIS IS A TEST</div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="padding" class="padding">
+      <h3 class="property">Padding</h3>
+      <h3>Usage:</h3>
+      <pre>padding: length | auto | inherit | initial;</pre>
+      <p>This property sets the spacing INSIDE the element.</p>
+      <p class="note">Providing [w] as the length will set w for padding on all sides.</p>
+      <p class="note">Providing [w x] as length will set w for top and bottom paddings and x for left and right paddings.</p>
+      <p class="note">Providing [w x y] as length will set w for top, x for left AND right, and y for bottom paddings.</p>
+      <p class="note">Providing [w x y z] as length will set w for top, x for right, y for bottom, and z for left paddings.</p>
+      <h3>Example:</h3>
+      <p class="note">This example is setting the padding of the green box</p>
+      padding:
+      <input type="number" id="padding-val" onchange="changePadding()"/>px [all sides]<br>
+      <div class="outer">
+        <div class="inner">HELLO WORLD, THIS IS A TEST</div>
+      </div>
+    </div>
+    <hr>
+
+    <div id="text-align-last">
+      <h3 class="property">Text Align Last</h3>
+      <h3>Usage:</h3>
+      <pre>text-align-last: auto | left | right | center | justify | start | end | initial | inherit;</pre>
+      <p>This property sets the alignment of the last line of a paragraph</p>
+      <p class="note">Note: This property is not supported in Safari</p>
+      <p class="note">Note: For use in Firefox, include the -moz- vendor prefix</p>
+      <p class="note">Note: Internet Explorer does not support the start or end options</p>
+      <h3>Example:</h3>
+      justify-content:
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('auto')"/>auto
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('left')"/>left
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('right')"/>right
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('center')"/>center
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('justify')"/>justify
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('start')"/>start
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('end')"/>end
+      <input type="radio" name="text-align-last-opt" onclick="changeTextAlignLast('initial')" checked/>initial
+      <p id="text-align-last-ex">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus sodales volutpat.
+        Donec feugiat eros sed lectus faucibus, quis ultrices nisl dictum.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
+        Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
+      </p>
     </div>
     <hr>
   </body>
