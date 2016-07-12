@@ -5,40 +5,222 @@
     <meta charset="utf-8">
 
     <style>
+      /* "global" css for this file */
       pre {
         text-indent: 25px;
       }
+
+      .border-ex {
+        height: 300px;
+        width: 300px;
+        border: 1px solid black;
+      }
     </style>
+
+    <script>
+      function changeBorderBottomColor(newVal) {
+        var el = document.querySelectorAll("#border-bottom-color .border-ex")[0];
+        if(newVal === undefined) {
+          var color = document.getElementById("border-bottom-color-val").value;
+          el.style.borderBottomColor = color;
+          return;
+        }
+        el.style.borderBottomColor = newVal;
+      }
+    </script>
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#border-bottom-color">border-bottom-color</a></li>
+      <li><a href="#border-bottom-style">border-bottom-style</a></li>
+      <li><a href="#border-color">border-color</a></li>
+      <li><a href="#border-bottom-width">border-bottom-width</a></li>
+      <li><a href="#border-left-color">border-left-color</a></li>
+      <li><a href="#border-bottom">border-bottom</a></li>
+      <li><a href="#border-left-style">border-left-style</a></li>
+      <li><a href="#border-left">border-left</a></li>
+      <li><a href="#border-right-color">border-right-color</a></li>
+      <li><a href="#border-left-width">border-left-width</a></li>
+      <li><a href="#border-right-style">border-right-style</a></li>
+      <li><a href="#border-right-width">border-right-width</a></li>
+      <li><a href="#border-right">border-right</a></li>
+      <li><a href="#border-top-color">border-top-color</a></li>
+      <li><a href="#border-top-style">border-top-style</a></li>
+      <li><a href="#border-style">border-style</a></li>
+      <li><a href="#border-top-width">border-top-width</a></li>
+      <li><a href="#border-top">border-top</a></li>
+      <li><a href="#border-width">border-width</a></li>
+      <li><a href="#border">border</a></li>
     </ol>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <style>
+      #border-bottom-color .border-ex {
+        border-bottom: 5px solid black;
+      }
+    </style>
+    <div id="border-bottom-color">
+      <h3>Border Bottom Color</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>border-bottom-color: color | transparent | initial | inherit;</pre>
+      <h3>Example</h3>
+      color: <input type="color" id="border-bottom-color-val" onchange="changeBorderBottomColor()"/><br>
+      <input type="button" onclick="changeBorderBottomColor('transparent')" value="Set Transparent"/>
+      <div class="border-ex">
+      </div>
+    </div>
+    <hr>
+
+    <div id="border-bottom-style">
+      <h3>Border Bottom Style</h3>
+      <h3>Usage</h3>
+      <pre>border-bottom-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="border-color">
+      <h3>Border Color</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>border-color: color | transparent | initial | inherit;</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="border-bottom-width">
+      <h3>Border Bottom Width</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>border-bottom-width: medium | thin | thick | length | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-left-color">
+      <h3>Border Left Color</h3>
+      <h3>Usage</h3>
+      <pre>border-left-color: color | transparent | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-bottom">
+      <h3>Border Bottom</h3>
+      <h3>Usage</h3>
+      <pre>border-bottom: border-width border-style border-color | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-left-style">
+      <h3>Border Left Style</h3>
+      <h3>Usage</h3>
+      <pre>border-left-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-left">
+      <h3>Border Left</h3>
+      <h3>Usage</h3>
+      <pre>border-left: border-width border-style border-color | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-right-color">
+      <h3>Border Right Color</h3>
+      <h3>Usage</h3>
+      <pre>border-right-color: color | transparent | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-left-width">
+      <h3>Border Left Width</h3>
+      <h3>Usage</h3>
+      <pre>border-left-width: medium | thin | thick | length | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-right-style">
+      <h3>Border Right Style</h3>
+      <h3>Usage</h3>
+      <pre>border-right-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-right-width">
+      <h3>Border Right Width</h3>
+      <h3>Usage</h3>
+      <pre>border-right-width: medium | thin | thick | length | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-right">
+      <h3>Border Right</h3>
+      <h3>Usage</h3>
+      <pre>border-right: border-width border-style border-color | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-top-color">
+      <h3>Border Top Color</h3>
+      <h3>Usage</h3>
+      <pre>border-top-color: color | transparent | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-top-style">
+      <h3>Border Top Style</h3>
+      <h3>Usage</h3>
+      <pre>border-top-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-style">
+      <h3>Border Style</h3>
+      <h3>Usage</h3>
+      <pre>border-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-top-width">
+      <h3>Border Top Width</h3>
+      <h3>Usage</h3>
+      <pre>border-top-width: medium | thin | thick | length | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-top">
+      <h3>Border Tope</h3>
+      <h3>Usage</h3>
+      <pre>border-top: border-width border-style border-color | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border-width">
+      <h3>Border Width</h3>
+      <h3>Usage</h3>
+      <pre>border-width: medium | thin | thick | length | initial | inherit;</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+    <div id="border">
+      <h3>Border</h3>
+      <h3>Usage</h3>
+      <pre>border: border-width border-style border-color | initial | inherit;</pre>
       <h3>Example</h3>
     </div>
     <hr>
