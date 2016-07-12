@@ -11,8 +11,8 @@
       }
 
       .border-ex {
-        height: 300px;
-        width: 300px;
+        height: 200px;
+        width: 200px;
         border: 1px solid black;
       }
     </style>
@@ -26,6 +26,46 @@
           return;
         }
         el.style.borderBottomColor = newVal;
+      }
+
+      function changeBorderColor(newVal) {
+        var el = document.querySelectorAll("#border-color .border-ex")[0];
+        if(newVal === undefined) {
+          var color = document.getElementById("border-color-val").value;
+          el.style.borderColor = color;
+          return;
+        }
+        el.style.borderColor = newVal;
+      }
+
+      function changeBorderLeftColor(newVal) {
+        var el = document.querySelectorAll("#border-left-color .border-ex")[0];
+        if(newVal === undefined) {
+          var color = document.getElementById("border-left-color-val").value;
+          el.style.borderLeftColor = color;
+          return;
+        }
+        el.style.borderLeftColor = newVal;
+      }
+
+      function changeBorderRightColor(newVal) {
+        var el = document.querySelectorAll("#border-right-color .border-ex")[0];
+        if(newVal === undefined) {
+          var color = document.getElementById("border-right-color-val").value;
+          el.style.borderRightColor = color;
+          return;
+        }
+        el.style.borderRightColor = newVal;
+      }
+
+      function changeBorderTopColor(newVal) {
+        var el = document.querySelectorAll("#border-top-color .border-ex")[0];
+        if(newVal === undefined) {
+          var color = document.getElementById("border-top-color-val").value;
+          el.style.borderTopColor = color;
+          return;
+        }
+        el.style.borderTopColor = newVal;
       }
     </script>
   </head>
@@ -68,8 +108,7 @@
       <h3>Example</h3>
       color: <input type="color" id="border-bottom-color-val" onchange="changeBorderBottomColor()"/><br>
       <input type="button" onclick="changeBorderBottomColor('transparent')" value="Set Transparent"/>
-      <div class="border-ex">
-      </div>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -78,14 +117,23 @@
       <h3>Usage</h3>
       <pre>border-bottom-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
+    <style>
+      #border-color .border-ex {
+        border: 5px solid black;
+      }
+    </style>
     <div id="border-color">
       <h3>Border Color</h3>
       <h3>Usage</h3>
       <pre>border-color: color | transparent | initial | inherit;</pre>
       <h3>Example</h3>
+      color: <input type="color" id="border-color-val" onchange="changeBorderColor()"/><br>
+      <input type="button" onclick="changeBorderColor('transparent')" value="Set Transparent"/>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -94,14 +142,23 @@
       <h3>Usage</h3>
       <pre>border-bottom-width: medium | thin | thick | length | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
+    <style>
+      #border-left-color .border-ex {
+        border-left: 5px solid black;
+      }
+    </style>
     <div id="border-left-color">
       <h3>Border Left Color</h3>
       <h3>Usage</h3>
       <pre>border-left-color: color | transparent | initial | inherit;</pre>
       <h3>Example</h3>
+      color: <input type="color" id="border-left-color-val" onchange="changeBorderLeftColor()"/><br>
+      <input type="button" onclick="changeBorderLeftColor('transparent')" value="Set Transparent"/>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -110,6 +167,7 @@
       <h3>Usage</h3>
       <pre>border-bottom: border-width border-style border-color | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -118,6 +176,7 @@
       <h3>Usage</h3>
       <pre>border-left-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -126,14 +185,23 @@
       <h3>Usage</h3>
       <pre>border-left: border-width border-style border-color | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
+    <style>
+      #border-right-color .border-ex {
+        border-right: 5px solid black;
+      }
+    </style>
     <div id="border-right-color">
       <h3>Border Right Color</h3>
       <h3>Usage</h3>
       <pre>border-right-color: color | transparent | initial | inherit;</pre>
       <h3>Example</h3>
+      color: <input type="color" id="border-right-color-val" onchange="changeBorderRightColor()"/><br>
+      <input type="button" onclick="changeBorderRightColor('transparent')" value="Set Transparent"/>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -142,6 +210,7 @@
       <h3>Usage</h3>
       <pre>border-left-width: medium | thin | thick | length | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -150,6 +219,7 @@
       <h3>Usage</h3>
       <pre>border-right-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -158,6 +228,7 @@
       <h3>Usage</h3>
       <pre>border-right-width: medium | thin | thick | length | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -166,14 +237,23 @@
       <h3>Usage</h3>
       <pre>border-right: border-width border-style border-color | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
+    <style>
+      #border-top-color .border-ex {
+        border-top: 5px solid black;
+      }
+    </style>
     <div id="border-top-color">
       <h3>Border Top Color</h3>
       <h3>Usage</h3>
       <pre>border-top-color: color | transparent | initial | inherit;</pre>
       <h3>Example</h3>
+      color: <input type="color" id="border-top-color-val" onchange="changeBorderTopColor()"/><br>
+      <input type="button" onclick="changeBorderTopColor('transparent')" value="Set Transparent"/>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -182,6 +262,7 @@
       <h3>Usage</h3>
       <pre>border-top-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -190,6 +271,7 @@
       <h3>Usage</h3>
       <pre>border-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -198,6 +280,7 @@
       <h3>Usage</h3>
       <pre>border-top-width: medium | thin | thick | length | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -206,6 +289,7 @@
       <h3>Usage</h3>
       <pre>border-top: border-width border-style border-color | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -214,6 +298,7 @@
       <h3>Usage</h3>
       <pre>border-width: medium | thin | thick | length | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
 
@@ -222,6 +307,7 @@
       <h3>Usage</h3>
       <pre>border: border-width border-style border-color | initial | inherit;</pre>
       <h3>Example</h3>
+      <div class="border-ex"></div>
     </div>
     <hr>
   </body>
