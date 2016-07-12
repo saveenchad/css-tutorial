@@ -76,6 +76,12 @@
       input[type='number'] {
         border: 1px solid #ccc;
       }
+
+      .text-justify-align {
+        border: 1px solid black;
+        width: 500px;
+        padding: 0 10px;
+      }
     </style>
 
     <script>
@@ -162,6 +168,47 @@
         var el = document.getElementById("text-align-last-ex");
         el.style.textAlignLast = newVal;
       }
+
+      function changeTextJustify(newVal) {
+        var el = document.querySelectorAll("#text-justify-ex p")[0];
+        el.style.textJustify = newVal;
+      }
+
+      function changeTextAlign(newVal) {
+        var el = document.querySelectorAll("#text-align-ex p")[0];
+        el.style.textAlign = newVal;
+      }
+
+      function changeWordSpacing(newVal) {
+        var el = document.querySelectorAll("#word-spacing-ex p")[0];
+        if(newVal === undefined) {
+          newVal = document.getElementById("word-spacing-val").value;
+          el.style.wordSpacing = newVal + "px";
+          return;
+        }
+        el.style.wordSpacing = newVal;
+      }
+
+      function changeLetterSpacing(newVal) {
+        var el = document.querySelectorAll("#letter-spacing-ex p")[0];
+        if(newVal === undefined) {
+          newVal = document.getElementById("letter-spacing-val").value;
+          el.style.letterSpacing = newVal + "px";
+          return;
+        }
+        el.style.letterSpacing = newVal;
+      }
+
+      function changeTextShadow() {
+        var form = document.getElementById("text-shadow-form");
+        var el = document.querySelectorAll("#text-shadow h1")[0];
+        var hShadow = form.textShadowH.value ? form.textShadowH.value : "0";
+        var vShadow = form.textShadowV.value ? form.textShadowV.value : "0";
+        var blurRad = form.textShadowB.value ? form.textShadowB.value : "0";
+        var color = form.textShadowC.value ? form.textShadowC.value : "#000000";
+
+        el.style.textShadow = hShadow + "px " + vShadow + "px " + blurRad + "px " + color;
+      }
     </script>
   </head>
   <body>
@@ -183,7 +230,11 @@
       <li><a href="#padding-top">padding-top</a></li>
       <li><a href="#padding">padding</a></li>
       <li><a href="#text-align-last">text-align-last</a></li>
-      <li><a href="#"></a></li>
+      <li><a href="#text-justify">text-justify</a></li>
+      <li><a href="#text-align">text-align</a></li>
+      <li><a href="#word-spacing">word-spacing</a></li>
+      <li><a href="#letter-spacing">letter-spacing</a></li>
+      <li><a href="#text-shadow">text-shadow</a></li>
     </ol>
     <hr>
 
@@ -309,7 +360,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the margin-bottom of the green box</p>
       margin-bottom:
-      <input type="number" id="margin-bottom-val" onchange="changeMarginBottom()"/>px
+      <input type="number" id="margin-bottom-val" onchange="changeMarginBottom()" value="0"/>px
       <div class="outer">
         <div class="inner"></div>
       </div>
@@ -333,7 +384,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the margin-right of the green box</p>
       margin-right:
-      <input type="number" id="margin-right-val" onchange="changeMarginRight()"/>px
+      <input type="number" id="margin-right-val" onchange="changeMarginRight()" value="0"/>px
       <div class="outer">
         <div class="inner"></div>
       </div>
@@ -348,7 +399,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the margin-top of the green box</p>
       margin-top:
-      <input type="number" id="margin-top-val" onchange="changeMarginTop()"/>px
+      <input type="number" id="margin-top-val" onchange="changeMarginTop()" value="0"/>px
       <div class="outer">
         <div class="inner"></div>
       </div>
@@ -367,7 +418,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the margin of the green box</p>
       margin:
-      <input type="number" id="margin-val" onchange="changeMargin()"/>px [all sides]<br>
+      <input type="number" id="margin-val" onchange="changeMargin()" value="0"/>px [all sides]<br>
       <div class="outer">
         <div class="inner"></div>
       </div>
@@ -382,7 +433,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the margin-left of the green box</p>
       margin-top:
-      <input type="number" id="margin-left-val" onchange="changeMarginLeft()"/>px
+      <input type="number" id="margin-left-val" onchange="changeMarginLeft()" value="0"/>px
       <div class="outer">
         <div class="inner"></div>
       </div>
@@ -397,7 +448,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the padding-bottom of the green box</p>
       padding-bottom:
-      <input type="number" id="padding-bottom-val" onchange="changePaddingBottom()"/>px
+      <input type="number" id="padding-bottom-val" onchange="changePaddingBottom()" value="0"/>px
       <div class="outer">
         <div class="inner">HELLO WORLD, THIS IS A TEST</div>
       </div>
@@ -412,7 +463,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the padding-right of the green box</p>
       padding-right:
-      <input type="number" id="padding-right-val" onchange="changePaddingRight()"/>px
+      <input type="number" id="padding-right-val" onchange="changePaddingRight()" value="0"/>px
       <div class="outer">
         <div class="inner">HELLO WORLD, THIS IS A TEST</div>
       </div>
@@ -427,7 +478,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the padding-top of the green box</p>
       padding-top:
-      <input type="number" id="padding-top-val" onchange="changePaddingTop()"/>px
+      <input type="number" id="padding-top-val" onchange="changePaddingTop()" value="0"/>px
       <div class="outer">
         <div class="inner">HELLO WORLD, THIS IS A TEST</div>
       </div>
@@ -442,7 +493,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the padding-left of the green box</p>
       padding-top:
-      <input type="number" id="padding-left-val" onchange="changePaddingLeft()"/>px
+      <input type="number" id="padding-left-val" onchange="changePaddingLeft()" value="0"/>px
       <div class="outer">
         <div class="inner">HELLO WORLD, THIS IS A TEST</div>
       </div>
@@ -461,7 +512,7 @@
       <h3>Example:</h3>
       <p class="note">This example is setting the padding of the green box</p>
       padding:
-      <input type="number" id="padding-val" onchange="changePadding()"/>px [all sides]<br>
+      <input type="number" id="padding-val" onchange="changePadding()" value="0"/>px [all sides]<br>
       <div class="outer">
         <div class="inner">HELLO WORLD, THIS IS A TEST</div>
       </div>
@@ -492,6 +543,113 @@
         Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
         Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
       </p>
+    </div>
+    <hr>
+
+    <style>
+      #text-justify-ex p {
+        text-align: justify;
+      }
+    </style>
+    <div id="text-justify">
+      <h3 class="property">Text Justify</h3>
+      <h3>Usage:</h3>
+      <pre>text-justify: auto | inter-word | inter-ideograph | inter-cluster | distribute | kashida | trim | initial | inherit;</pre>
+      <p class="note">Note: This property is only supported on Microsoft Edge!</p>
+      <p class="note">Note: This property must be used along with text-align: justify</p>
+      <h3>Example:</h3>
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('auto')"/>auto
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('inter-word')"/>inter-word
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('inter-ideograph')"/>inter-ideograph
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('inter-cluster')"/>inter-cluster
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('distribute')"/>distribute
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('kashida')"/>kashida
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('trim')"/>trim
+      <input type="radio" name="text-justify-opt" onclick="changeTextJustify('initial')" checked/>initial
+      <div id="text-justify-ex" class="text-justify-align">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus sodales volutpat.
+          Donec feugiat eros sed lectus faucibus, quis ultrices nisl dictum.
+          Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
+          Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <div id="text-align">
+      <h3 class="property">Text Align</h3>
+      <h3>Usage:</h3>
+      <pre>text-align: left | right | center | justify | initial | inherit;</pre>
+      <h3>Example:</h3>
+      <input type="radio" name="text-align-opt" onclick="changeTextAlign('left')"/>left
+      <input type="radio" name="text-align-opt" onclick="changeTextAlign('right')"/>right
+      <input type="radio" name="text-align-opt" onclick="changeTextAlign('center')"/>center
+      <input type="radio" name="text-align-opt" onclick="changeTextAlign('justify')"/>justify
+      <input type="radio" name="text-align-opt" onclick="changeTextAlign('initial')" checked/>initial
+      <div id="text-align-ex" class="text-justify-align">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus sodales volutpat.
+          Donec feugiat eros sed lectus faucibus, quis ultrices nisl dictum.
+          Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
+          Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <div id="word-spacing">
+      <h3 class="property">Word Spacing</h3>
+      <h3>Usage:</h3>
+      <pre>word-spacing: normal | length | initial | inherit;</pre>
+      <h3>Example:</h3>
+      <input type="radio" name="word-spacing-opt" onclick="changeWordSpacing('normal')"/>normal
+      <input type="radio" name="word-spacing-opt" onclick="changeWordSpacing('initial')" checked/>initial<br>
+      length: <input type="number" id="word-spacing-val" onchange="changeWordSpacing(undefined)" value="0"/>px
+      <div id="word-spacing-ex" class="text-justify-align">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus sodales volutpat.
+          Donec feugiat eros sed lectus faucibus, quis ultrices nisl dictum.
+          Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
+          Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <div id="letter-spacing">
+      <h3 class="property">Letter Spacing</h3>
+      <h3>Usage:</h3>
+      <pre>letter-spacing: normal | length | initial | inherit;</pre>
+      <h3>Example:</h3>
+      <input type="radio" name="letter-spacing-opt" onclick="changeLetterSpacing('normal')"/>normal
+      <input type="radio" name="letter-spacing-opt" onclick="changeLetterSpacing('initial')" checked/>initial<br>
+      length: <input type="number" id="letter-spacing-val" onchange="changeLetterSpacing(undefined)" value="0"/>px
+      <div id="letter-spacing-ex" class="text-justify-align">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus sodales volutpat.
+          Donec feugiat eros sed lectus faucibus, quis ultrices nisl dictum.
+          Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
+          Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <div id="text-shadow">
+      <h3 class="property">Text Shadow</h3>
+      <h3>Usage:</h3>
+      <pre>text-shadow: h-shadow v-shadow blur-radius color | none | initial | inherit;</pre>
+      <p class="note">Note: This property is not supported on Internet Explorer (version 9 and earlier)</p>
+      <h3>Example:</h3>
+      <form id="text-shadow-form">
+        h-shadow: <input type="number" name="textShadowH" value="0"/>px<br>
+        v-shadow: <input type="number" name="textShadowV" value="0"/>px<br>
+        blur-radius: <input type="number" name="textShadowB" value="0" min="0"/>px<br>
+        color: <input type="color" name="textShadowC"/><br>
+        <input type="button" onclick="changeTextShadow()" value="Submit"/>
+      </form>
+      <h1>This is a text-shadow test!</h1>
     </div>
     <hr>
   </body>
