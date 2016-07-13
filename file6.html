@@ -102,6 +102,114 @@
         column-count: auto;
       }
 
+      .color {
+        color: black;
+      }
+
+      .clip {
+        clip: rect(0px,60px,200px,0px);
+      }
+
+      .animation {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+      }
+
+      .animation-delay {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+        animation-delay: 2s;
+      }
+
+      .animation-direction {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+        animation-direction: normal;
+      }
+
+      .animation-duration {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+        animation-duration: 500ms;
+      }
+
+      .animation-iteration-count {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
+        animation: mymove 5s;
+        -webkit-animation-iteration-count: 2;  /* Chrome, Safari, Opera */
+        animation-iteration-count: 2;
+      }
+
+      .animation-name {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+      }
+
+      .animation-play-state {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+        -webkit-animation-play-state: running;  /* Chrome, Safari, Opera */
+        animation-play-state: running;
+      }
+
+      .animation-timing-function {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+        -webkit-animation-timing-function: linear;  /* Chrome, Safari, Opera */
+        animation-timing-function: linear;
+      }
+
+      /* Chrome, Safari, Opera */
+      @-webkit-keyframes mymove {
+          from {left: 0px;}
+          to {left: 200px;}
+      }
+
+      @keyframes mymove {
+          from {left: 0px;}
+          to {left: 200px;}
+      }
+
     </style>
     <script>
       function changeColumns(newVal) {
@@ -154,6 +262,35 @@
         el.style.columnCount = newVal;
       }
 
+      function changeColor(newVal) {
+        var el = document.querySelectorAll("#color")[0];
+        el.style.color = newVal;
+      }
+
+      function changeClip(newVal) {
+        var el = document.querySelectorAll("#clip")[0];
+        el.style.clip = newVal;
+      }
+
+      function changeAnimationDirection(newVal) {
+        var el = document.querySelectorAll("#animation-direction")[0];
+        el.style.animationDirection = newVal;
+      }
+
+      function changeAnimationDuration(newVal) {
+        var el = document.querySelectorAll("#animation-duration")[0];
+        el.style.animationDuration = newVal;
+      }
+
+      function changeAnimationPlayState(newVal) {
+        var el = document.querySelectorAll("#animation-play-state")[0];
+        el.style.animationPlayState = newVal;
+      }
+
+      function changeAnimationTimingFunction(newVal) {
+        var el = document.querySelectorAll("#animation-timing-function")[0];
+        el.style.animationTimingFunction = newVal;
+      }
 
     </script>
   </head>
@@ -171,16 +308,16 @@
       <li><a href="#column-gap-div">column-gap</a></li>
       <li><a href="#column-fill-div">column-fill</a></li>
       <li><a href="#column-count-div">column-count</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
+      <li><a href="#color">color</a></li>
+      <li><a href="#clip-div">clip</a></li>
+      <li><a href="#animation-div">animation</a></li>
+      <li><a href="#animation-delay-div">animation-delay</a></li>
+      <li><a href="#animation-direction-div">animation-direction</a></li>
+      <li><a href="#animation-duration-div">animation-duration</a></li>
+      <li><a href="#animation-iteration-count-div">animation-iteration-count</a></li>
+      <li><a href="#animation-name-div">animation-name</a></li>
+      <li><a href="#animation-play-state-div">animation-play-state</a></li>
+      <li><a href="#animation-timing-function-div">animation-timing-function</a></li>
     </ol>
     <hr>
 
@@ -397,96 +534,177 @@
 
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="color" class="color">
+      <h3 class="property">Color</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>color: color | initial | inherit</pre>
+      <p>The color property specifies the color of text.</P>
       <h3>Example</h3>
+      color:
+      <input type="radio" name="color-opt" onclick="changeColor('black')" checked/>black
+      <input type="radio" name="color-opt" onclick="changeColor('pink')"/>pink
+      <input type="radio" name="color-opt" onclick="changeColor('rgb(100,100,100)')"/>rgb(100,100,100)
+      <input type="radio" name="color-opt" onclick="changeColor('#ff0000')"/>##ff0000
+      <input type="radio" name="color-opt" onclick="changeColor('initial')"/>initial
+      <input type="radio" name="color-opt" onclick="changeColor('inherit')"/>inherit
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="clip-div">
+      <h3 class="property">Clip</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>clip: auto | shape | initial | inherit</pre>
+      <p>What happens if an image is larger than its containing element? - The clip property lets you specify a rectangle to clip an absolutely positioned element. The rectangle is specified as four coordinates, all from the top-left corner of the element to be clipped.</p>
       <h3>Example</h3>
+      clip:
+      <input type="radio" name="clip-opt" onclick="changeClip('auto')" checked/>auto
+      <input type="radio" name="clip-opt" onclick="changeClip('rect(0px,60px,200px,0px)')"/>rect(0px,60px,200px,0px)
+      <input type="radio" name="clip-opt" onclick="changeClip('initial')"/>initial
+      <input type="radio" name="clip-opt" onclick="changeClip('inherit')"/>inherit
+      
+      <img id="clip" class="clip" src="ghost_transparent.jpg" width="200" height="200">
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="animation-div">
+      <h3 class="property">Animation</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>animation: name duration timing-function delay iteration-count direction fill-mode play-state</pre>
+      <pre>The animation property is a shorthand property for eight of the animation properties:<br>
+
+          1. animation-name<br>
+          2. animation-duration<br>
+          3. animation-timing-function<br>
+          4. animation-delay<br>
+          5. animation-iteration-count<br>
+          6. animation-direction<br>
+          7. animation-fill-mode<br>
+          8. animation-play-state<br>
+      </pre>
+      <p class="note">Note: Always specify the animation-duration property, otherwise the duration is 0, and will never be played.</p>
       <h3>Example</h3>
+      Animation:
+      <div class="animation"></div>
     </div>
     <hr>
 
 
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="animation-delay-div">
+      <h3 class="property">Animation Delay</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>animation-delay: time | initial | inherit</pre>
+      <p>The animation-delay property specifies a delay for the start of an animation.</p>
+      <p>The animation-delay value is defined in seconds (s) or milliseconds (ms).</p>
       <h3>Example</h3>
-    </div>
-    <hr>
-
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
+      animation-delay:
+      <div class="animation-delay"></div>
     </div>
     <hr>
 
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="animation-direction-div">
+      <h3 class="property">Animation Direction</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>animation-direction: normal | reverse | alternate | alternate-reverse | initial | inherit;</pre>
+      <p>The animation-direction property defines whether an animation should play in reverse direction or in alternate cycles.</p>
+      <p class="note">Note: The animation-direction property is not supported in Internet Explorer 9 and earlier versions.</p>
+      <p class="note">Note: The "reverse" and "alternate-reverse" values are not supported Safari.</p>
       <h3>Example</h3>
+      animation-direction:
+      <input type="radio" name="animation-direction-opt" onclick="changeAnimationDirection('normal')" checked/>normal
+      <input type="radio" name="animation-direction-opt" onclick="changeAnimationDirection('reverse')"/>reverse
+      <input type="radio" name="animation-direction-opt" onclick="changeAnimationDirection('alternate')"/>alternate
+      <input type="radio" name="animation-direction-opt" onclick="changeAnimationDirection('alternate-reverse')"/>alternate-reverse
+
+      <div id="animation-direction" class="animation-direction"></div>
+
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="animation-duration-div">
+      <h3 class="property">Animation Duration</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>animation-duration: time | initial | inherit</pre>
+      <p>The animation-duration property defines how many seconds or milliseconds an animation takes to complete one cycle.</p>
+      <p class="note">Note: The animation-duration property is not supported in Internet Explorer 9 and earlier versions.</p>
       <h3>Example</h3>
+      animation-duration:
+      <input type="radio" name="animation-duration-opt" onclick="changeAnimationDuration('500ms')" checked/>500ms
+      <input type="radio" name="animation-duration-opt" onclick="changeAnimationDuration('1s')"/>1s
+      <input type="radio" name="animation-duration-opt" onclick="changeAnimationDuration('2s')"/>2s
+      <input type="radio" name="animation-duration-opt" onclick="changeAnimationDuration('5s')"/>5s
+
+      <div id="animation-duration" class="animation-duration"></div>
+
+    </div>
+    <hr>
+
+
+    <div id="animation-iteration-count-div">
+      <h3 class="property">Animation Iteration Count</h3>
+      <h3>Usage</h3>
+      <pre>animation-iteration-count: number | infinite | initial | inherit</pre>
+      <p>The animation-iteration-count property specifies the number of times an animation should be played.</p>
+      <h3>Example</h3>
+      animation-iteration-count:<br>
+      "All previous animations have used infinite animation-iteration-count. This example is using 2.
+      
+      <div id="animation-iteration-count" class="animation-iteration-count"></div>
+    </div>
+    <hr>
+
+
+
+    <div id="animation-name-div">
+      <h3 class="property">Animation Name</h3>
+      <h3>Usage</h3>
+      <pre>animation-name: keyframename | none | initial | inherit</pre>
+      <p>The animation-name property specifies a name for the @keyframes animation.</p>
+      <h3>Example</h3>
+      animation-name:
+
+      <div id="animation-name" class="animation-name"></div>
+    </div>
+    <hr>
+
+
+
+    <div id="animation-play-state-div">
+      <h3 class="property">Animation Play State</h3>
+      <h3>Usage</h3>
+      <pre>animation-play-state: paused | running | initial | inherit</pre>
+      <p>The animation-play-state property specifies whether the animation is running or paused.</p>
+      <p class="note">Note: Use this property in a JavaScript to pause an animation in the middle of a cycle.</p>
+      <h3>Example</h3>
+      animation-play-state:
+      <input type="radio" name="animation-play-state-opt" onclick="changeAnimationPlayState('running')" checked/>running
+      <input type="radio" name="animation-play-state-opt" onclick="changeAnimationPlayState('paused')"/>paused
+
+      <div id="animation-play-state" class="animation-play-state"></div>
+    </div>
+    <hr>
+
+
+    <div id="animation-timing-function-div">
+      <h3 class="property">Animation Timing Function</h3>
+      <h3>Usage</h3>
+      <pre>animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int,start|end) | cubic-bezier(n,n,n,n) | initial | inherit</pre>
+      <p>The animation-timing-function specifies the speed curve of an animation.</p>
+      <p>The speed curve defines the TIME an animation uses to change from one set of CSS styles to another.</p>
+      <p>The speed curve is used to make the changes smoothly.</p>
+      <h3>Example</h3>
+      animation-timing-function:
+      <input type="radio" name="animation-timing-function-opt" onclick="changeAnimationTimingFunction('linear')" checked/>linear
+      <input type="radio" name="animation-timing-function-opt" onclick="changeAnimationTimingFunction('ease')"/>ease
+      <input type="radio" name="animation-timing-function-opt" onclick="changeAnimationTimingFunction('ease-in')"/>ease-in
+      <input type="radio" name="animation-timing-function-opt" onclick="changeAnimationTimingFunction('ease-out')"/>ease-out
+      <input type="radio" name="animation-timing-function-opt" onclick="changeAnimationTimingFunction('ease-in-out')"/>ease-in-out
+
+      <div id="animation-timing-function" class="animation-timing-function"></div>
     </div>
     <hr>
 
