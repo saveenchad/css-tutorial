@@ -5,42 +5,457 @@
     <meta charset="utf-8">
 
     <style>
-      pre {
+      pre, div p {
         text-indent: 25px;
       }
+
+      .note {
+        font-style: italic;
+      }
+
+      .property {
+        text-decoration: underline;
+      }
+
+      .background-attachment {
+        background-image: url('casper_transparent.gif');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .background-clip {
+        border: 5px dashed black;
+        padding: 40px;
+        background: pink;
+        background-clip: border-box;
+      }
+
+      .background-image {
+        background-image: url('casper_transparent.gif');
+      }
+
+      .background-color {
+        background_color: transparent;
+      }
+
+      .background-repeat {
+        background-image: url('casper_transparent.gif');
+        background-repeat: repeat;
+      }
+
+      .background-origin {
+        background: url(casper_transparent.gif);
+        background-repeat: no-repeat;
+        border: 5px dashed black;
+        padding: 40px;
+        background-origin: content-box;
+      }
+
+      .background-position {
+        background-image: url('casper_transparent.gif');
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: left-top; 
+      }
+
+      .background-size {
+        background-image: url('casper_transparent.gif');
+        background-size: auto;
+        background-repeat: no-repeat;
+        padding-top: 40px;
+      }
+
+      .caption-side {
+        caption-side: bottom;
+      }
+
+      .cursor {
+        cursor: default;
+      }
+
     </style>
+    <script>
+      function changeBackgroundAttachment(newVal) {
+        var el = document.querySelectorAll("#background-attachment")[0];
+        el.style.backgroundAttachment = newVal;
+      }
+
+      function changeBackgroundClip(newVal) {
+        var el = document.querySelectorAll("#background-clip")[0];
+        el.style.backgroundClip = newVal;
+      }
+
+      function changeBackgroundImage(newVal) {
+        var el = document.querySelectorAll("#background-image")[0];
+        if (newVal == 'url')
+          newVal = "url('casper_transparent.gif')";
+        el.style.backgroundImage = newVal;
+      }
+
+      function changeBackgroundColor(newVal) {
+        var el = document.querySelectorAll("#background-color")[0];
+        el.style.backgroundColor = newVal;
+      }
+
+      function changeBackgroundRepeat(newVal) {
+        var el = document.querySelectorAll("#background-repeat")[0];
+        el.style.backgroundRepeat = newVal;
+      }
+
+      function changeBackgroundOrigin(newVal) {
+        var el = document.querySelectorAll("#background-origin")[0];
+        el.style.backgroundOrigin = newVal;
+      }
+
+      function changeBackgroundPosition(newVal) {
+        var el = document.querySelectorAll("#background-position")[0];
+        el.style.backgroundPosition = newVal;
+      }
+
+      function changeBackgroundSize(newVal) {
+        var el = document.querySelectorAll("#background-size")[0];
+        el.style.backgroundSize = newVal;
+      }
+
+      function changeCaptionSide(newVal) {
+        var el = document.querySelectorAll("#caption-side")[0];
+        el.style.captionSide = newVal;
+      }
+
+      function changeCursor(newVal) {
+        var el = document.querySelectorAll("#cursor")[0];
+        el.style.cursor = newVal;
+      }
+
+
+    </script>
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#background-attachment">background-attachment</a></li>
+      <li><a href="#background-clip">background-clip</a></li>
+      <li><a href="#background-image">background-image</a></li>
+      <li><a href="#background-color">background-color</a></li>
+      <li><a href="#background-repeat">background-repeat</a></li>
+      <li><a href="#background-origin">background-origin</a></li>
+      <li><a href="#background-position">background-position</a></li>
+      <li><a href="#background-size">background-size</a></li>
+      <li><a href="#caption-side">caption-side</a></li>
+      <li><a href="#cursor">cursor</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
+      <li><a href="#...">...</a></li>
     </ol>
     <hr>
 
+
+    <div id="background-attachment" class="background-attachment">
+      <h3 class="property">background Attachment</h3>
+      <h3>Usage</h3>
+      <pre>background-attachment: scroll | fixed | local | initial | inherit</pre>
+      <p>
+        The background-attachment property sets whether a background image is fixed or scrolls with the rest of the page.
+      </p>
+      <p class="note">Note: Internet Explorer 8 and earlier versions do not support multiple background images on one element.</p>
+      <h3>Example</h3>
+      Change the value of background-attachment and observe how Casper changes when you scroll up or down. <br>
+      background-attachment:
+      <input type="radio" name="background-attachment-opt" onclick="changeBackgroundAttachment('scroll')"/>scroll
+      <input type="radio" name="background-attachment-opt" onclick="changeBackgroundAttachment('fixed')" checked/>fixed
+      <input type="radio" name="background-attachment-opt" onclick="changeBackgroundAttachment('local')"/>local
+      <input type="radio" name="background-attachment-opt" onclick="changeBackgroundAttachment('initial')"/>initial
+      <input type="radio" name="background-attachment-opt" onclick="changeBackgroundAttachment('inherit')"/>inherit
+    </div>
+    <hr>
+
+
+    <div id="background-clip" class="background-clip">
+      <h3 class="property">Background Clip</h3>
+      <h3>Usage</h3>
+      <pre>background-clip: border-box | padding-box | content-box | initial | inherit</pre>
+      <p>
+        The background-clip property specifies the painting area of the background.
+      </p>
+      <h3>Example</h3>
+      background-clip:
+      <input type="radio" name="background-clip-opt" onclick="changeBackgroundClip('border-box')" checked/>border-box
+      <input type="radio" name="background-clip-opt" onclick="changeBackgroundClip('padding-box')"/>padding-box
+      <input type="radio" name="background-clip-opt" onclick="changeBackgroundClip('content-box')"/>content-box
+      <input type="radio" name="background-clip-opt" onclick="changeBackgroundClip('initial')"/>initial
+      <input type="radio" name="background-clip-opt" onclick="changeBackgroundClip('inherit')"/>inherit
+    </div>
+    <hr>
+
+    <div id="background-image" class="background-image">
+      <h3 class="property">Background Image</h3>
+      <h3>Usage</h3>
+      <pre>background-image: url | none | initial | inherit</pre>
+      <p>The background-image property sets one or more background images for an element.</p>
+      <p>The background of an element is the total size of the element, including padding and border (but not the margin).</p>
+      <p>By default, a background-image is placed at the top-left corner of an element, and repeated both vertically and horizontally.</p>
+      <p class="note">Note: IE8 and earlier do not support multiple background images on one element.</p>
+      <h3>Example</h3>
+      background-image:
+      <input type="radio" name="background-image-opt" onclick="changeBackgroundImage('url')" checked/>url
+      <input type="radio" name="background-image-opt" onclick="changeBackgroundImage('none')"/>none
+      <input type="radio" name="background-image-opt" onclick="changeBackgroundImage('initial')"/>initial
+      <input type="radio" name="background-image-opt" onclick="changeBackgroundImage('inherit')"/>inherit
+    </div>
+    <hr>
+
+
+    <div id="background-color" class="background-color">
+      <h3 class="property">Background Color</h3>
+      <h3>Usage</h3>
+      <pre>background-color: color | transparent | initial | inherit</pre>
+      <p>The background-color property sets the background color of an element.</p>
+      <h3>Example</h3>
+      background-color:
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('transparent')" checked/>transparent
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('red')"/>red
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('blue')"/>blue
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('pink')"/>pink
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('purple')"/>purple
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('initial')"/>initial
+      <input type="radio" name="background-color-opt" onclick="changeBackgroundColor('inherit')"/>inherit
+    </div>
+    <hr>
+
+
+    <div id="background-repeat" class="background-repeat">
+      <h3 class="property">Background Repeat</h3>
+      <h3>Usage</h3>
+      <pre>background-repeat: repeat | repeat-x | repeat-y | no-repeat | initial | inherit;</pre>
+      <p>The background-repeat property sets if/how a background image will be repeated.</p>
+      <p>By default, a background-image is repeated both vertically and horizontally.</p>
+      <h3>Example</h3>
+      background-repeat:
+      <input type="radio" name="background-repeat-opt" onclick="changeBackgroundRepeat('repeat')" checked/>repeat
+      <input type="radio" name="background-repeat-opt" onclick="changeBackgroundRepeat('repeat-x')"/>repeat-x
+      <input type="radio" name="background-repeat-opt" onclick="changeBackgroundRepeat('repeat-y')"/>repeat-y
+      <input type="radio" name="background-repeat-opt" onclick="changeBackgroundRepeat('no-repeat')"/>no-repeat
+      <input type="radio" name="background-repeat-opt" onclick="changeBackgroundRepeat('initial')"/>initial
+      <input type="radio" name="background-repeat-opt" onclick="changeBackgroundRepeat('inherit')"/>inherit
+
+      <p style="font-size:40px;">
+        This text is here only because I needed more room to show the repetition.<br>
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+    <div id="background-origin" class="background-origin">
+      <h3 class="property">Background Origin</h3>
+      <h3>Usage</h3>
+      <pre>background-origin: padding-box | border-box | content-box | initial | inherit</pre>
+      <p>The background-origin property specifies where the background image is positioned.</p>
+      <p class="note">Note: If the background-attachment property is set to "fixed", this property has no effect.</p>
+      <h3>Example</h3>
+      background-repeat:
+      <input type="radio" name="background-origin-opt" onclick="changeBackgroundOrigin('padding-box')" checked/>padding-box
+      <input type="radio" name="background-origin-opt" onclick="changeBackgroundOrigin('border-box')"/>border-box
+      <input type="radio" name="background-origin-opt" onclick="changeBackgroundOrigin('content-box')"/>content-box
+      <input type="radio" name="background-origin-opt" onclick="changeBackgroundOrigin('initial')"/>initial
+      <input type="radio" name="background-origin-opt" onclick="changeBackgroundOrigin('inherit')"/>inherit
+    </div>
+    <hr>
+
+
+    <div id="background-position" class="background-position">
+      <h3 class="property">Background Position</h3>
+      <h3>Usage</h3>
+      <pre>background-position: left-top | left-center | left-bottom | right-top | right-center | right-bottom | center-top | center-center | center-bottom</pre>
+      <p>The background-position property sets the starting position of a background image.</p>
+      <h3>Example</h3>
+      background-position:
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('top left')" checked/>top left
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('top')"/>top
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('top right')"/>top right
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('center left')"/>center left
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('center')"/>center
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('center right')"/>center right
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('bottom left')"/>bottom left
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('bottom')"/>bottom
+      <input type="radio" name="background-position-opt" onclick="changeBackgroundPosition('bottom right')"/>bottom right
+      <p style="font-size:40px;">
+        This text is here only because I needed more room to show the positions.<br>
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+    <div id="background-size" class="background-size">
+      <h3 class="property">Background Size</h3>
+      <h3>Usage</h3>
+      <pre>background-size: auto | length | cover | contain | initial | inherit</pre>
+      <p>The background-size property specifies the size of the background images.</p>
+      <h3>Example</h3>
+      background-size:
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('auto')" checked/>auto
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('100px 100px')"/>100px 100px
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('1000px 1000px')"/>1000px 1000px
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('length')"/>length
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('cover')"/>cover
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('contain')"/>contain
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('initial')"/>initial
+      <input type="radio" name="background-size-opt" onclick="changeBackgroundSize('inherit')"/>inherit
+      <p style="font-size:40px;">
+        This text is here only because I needed more room to show the repetition.<br>
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+    <div id="caption-side" class="caption-side">
+      <h3 class="property">Caption Side</h3>
+      <h3>Usage</h3>
+      <pre>caption-side: top | bottom | initial | inherit;</pre>
+      <p>The caption-side property specifies the placement of a table caption.</p>
+      <h3>Example</h3>
+      caption-side:
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('top')"/>top
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('bottom')"/>bottom
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('initial')"/>initial
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('inherit')"/>inherit
+
+      <table border="1">
+        <caption>Table 1.1 Customers</caption>
+        <tr>
+          <th>Student Name</th>
+          <th>PID</th>
+          <th>School</th>
+        </tr>
+        <tr>
+          <td>Sara Farsi</td>
+          <td>12345</td>
+          <td>UCSD</td>
+        </tr>
+        <tr>
+          <td>Saveen Chadalawada</td>
+          <td>23456</td>
+          <td>UCSD</td>
+        </tr>
+        <tr>
+          <td>Blah Blah</td>
+          <td>34567</td>
+          <td>UCSD</td>
+        </tr>
+        <tr>
+          <td>Poop Poop</td>
+          <td>45678</td>
+          <td>UCSD</td>
+        </tr>
+        <tr>
+          <td>Big Bobby</td>
+          <td>56789</td>
+          <td>UCSD</td>
+        </tr>
+        <tr>
+          <td>Blank Page</td>
+          <td>67890</td>
+          <td>UCSD</td>
+        </tr>
+        </table>
+    </div>
+    <hr>
+
+
+    <div id="cursor" class="cursor">
+      <h3 class="property">Cursor</h3>
+      <h3>Usage</h3>
+      <pre>cursor: alias | all-scroll | auto | cell | context-menu | col-resize | copy | crosshair | default | e-resize | ew-resize | grab | grabbing | help | move | n-resize | ne-resize | nesw-resize | ns-resize | nw-resize | nwse-resize | no-drop | none | not-allowed | pointer | progress | row-resize | r-resize | s-resize | se-resize | sw-resize | text | URL | vertical-text | w-resize | wait | zoom-in | zoom-out | initial | inherit</pre>
+      <p>The cursor property specifies the type of cursor to be displayed when pointing on an element.</p>
+      <h3>Example</h3>
+      <input type="radio" name="cursor-opt" onclick="changeCursor('default')" checked/>default
+      <input type="radio" name="cursor-opt" onclick="changeCursor('not-allowed')"/>not-allowed
+      <input type="radio" name="cursor-opt" onclick="changeCursor('wait')"/>wait
+      <input type="radio" name="cursor-opt" onclick="changeCursor('zoom-in')"/>zoom-in
+      <input type="radio" name="cursor-opt" onclick="changeCursor('zoom-out')"/>zoom-out
+    </div>
+    <hr>
+
+
     <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
+
     <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
+
     <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
   </body>
 </html>
