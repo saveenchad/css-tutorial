@@ -73,6 +73,55 @@
         cursor: default;
       }
 
+      .direction {
+        direction: ltr;
+      }
+
+      .line-height {
+        line-height: normal;
+      }
+
+      .list-style-position {
+        list-style-position: inline;
+      }
+
+      .list-style-type {
+        list-style-type: square;
+      }
+
+      .outline {
+        outline: black solid thin;
+      }
+
+      .outline-color {
+        outline-style: solid;
+        outline-color: black;
+      }
+
+      .outline-offset {
+        margin: 20px;
+        width: 400px;
+        padding: 10px;
+        height: 400px;
+        border: 5px solid black;
+        outline: 3px dotted pink;
+        outline-offset: 5px;
+      }
+
+      .outline-style {
+        outline-style: none;
+      }
+
+      .outline-width {
+        outline-style: double;
+        outline-width: medium;
+      }
+
+      .visibility {
+        visibility: visible;
+      }
+
+
     </style>
     <script>
       function changeBackgroundAttachment(newVal) {
@@ -127,6 +176,55 @@
         el.style.cursor = newVal;
       }
 
+      function changeDirection(newVal) {
+        var el = document.querySelectorAll("#direction")[0];
+        el.style.direction = newVal;
+      }
+
+      function changeLineHeight(newVal) {
+        var el = document.querySelectorAll("#line-height")[0];
+        el.style.lineHeight = newVal;
+      }
+
+      function changeListStylePosition(newVal) {
+        var el = document.querySelectorAll("#list-style-position")[0];
+        el.style.listStylePosition = newVal;
+      }
+
+      function changeListStyleType(newVal) {
+        var el = document.querySelectorAll("#list-style-type")[0];
+        el.style.listStyleType = newVal;
+      }
+
+      function changeOutline(newVal) {
+        var el = document.querySelectorAll("#outline")[0];
+        el.style.outline = newVal;
+      }
+
+      function changeOutlineColor(newVal) {
+        var el = document.querySelectorAll("#outline-color")[0];
+        el.style.outlineColor = newVal;
+      }
+
+      function changeOutlineOffset(newVal) {
+        var el = document.querySelectorAll("#outline-offset")[0];
+        el.style.outlineOffset = newVal;
+      }
+
+      function changeOutlineStyle(newVal) {
+        var el = document.querySelectorAll("#outline-style")[0];
+        el.style.outlineStyle = newVal;
+      }
+
+      function changeOutlineWidth(newVal) {
+        var el = document.querySelectorAll("#outline-width")[0];
+        el.style.outlineWidth = newVal;
+      }
+
+      function changeVisibility(newVal) {
+        var el = document.querySelectorAll("#visibility")[0];
+        el.style.visibility = newVal;
+      }
 
     </script>
   </head>
@@ -144,16 +242,16 @@
       <li><a href="#background-size">background-size</a></li>
       <li><a href="#caption-side">caption-side</a></li>
       <li><a href="#cursor">cursor</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
-      <li><a href="#...">...</a></li>
+      <li><a href="#direction">direction</a></li>
+      <li><a href="#line-height">line-height</a></li>
+      <li><a href="#list-style-position">list-style-position</a></li>
+      <li><a href="#list-style-type">list-style-type</a></li>
+      <li><a href="#outline">outline</a></li>
+      <li><a href="#outline-color">outline-color</a></li>
+      <li><a href="#outline-offset">outline-offset</a></li>
+      <li><a href="#outline-style">outline-style</a></li>
+      <li><a href="#outline-width">outline-width</a></li>
+      <li><a href="#visibility">visibility</a></li>
     </ol>
     <hr>
 
@@ -393,65 +491,172 @@
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="direction" class="direction">
+      <h3 class="property">Direction</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>direction: ltr | rtl | initial | inherit</pre>
+      <p>The direction property specifies the text direction/writing direction.</p>
       <h3>Example</h3>
+      direction:
+      <input type="radio" name="direction-opt" onclick="changeDirection('ltr')" checked/>ltr
+      <input type="radio" name="direction-opt" onclick="changeDirection('rtl')"/>rtl
+      <input type="radio" name="direction-opt" onclick="changeDirection('initial')"/>initial
+      <input type="radio" name="direction-opt" onclick="changeDirection('inherit')"/>inherit
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="line-height" class="line-height">
+      <h3 class="property">Line Height</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>line-height: normal | number | length | initial | inherit</pre>
+      <p>The line-height property specifies the line height.</p>
       <h3>Example</h3>
+      line-height:
+      <input type="radio" name="line-height-opt" onclick="changeLineHeight('normal')" checked/>normal
+      <input type="radio" name="line-height-opt" onclick="changeLineHeight('10px')"/>10px
+      <input type="radio" name="line-height-opt" onclick="changeLineHeight('5')"/>5
+      <input type="radio" name="line-height-opt" onclick="changeLineHeight('initial')"/>initial
+      <input type="radio" name="line-height-opt" onclick="changeLineHeight('inherit')"/>inherit
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="list-style-position" class="list-style-position">
+      <h3 class="property">List Style Position</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>list-style-position: inside | outside | initial | inherit</pre>
+      <p>The list-style-position property specifies if the list-item markers should appear inside or outside the content flow.</p>
       <h3>Example</h3>
+      list-style-position:
+      <input type="radio" name="list-style-position-opt" onclick="changeListStylePosition('inside')"/>inside
+      <input type="radio" name="list-style-position-opt" onclick="changeListStylePosition('outside')" checked/>outside
+      <input type="radio" name="list-style-position-opt" onclick="changeListStylePosition('initial')"/>initial
+      <input type="radio" name="list-style-position-opt" onclick="changeListStylePosition('inherit')"/>inherit
+
+      <ul> Name of students:
+        <li> Sara </li>
+        <li> Saveen </li>
+        <li> Blah </li>
+        <li> Blank </li>
+      </ul>
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="list-style-type" class="list-style-type">
+      <h3 class="property">List Style Type</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>list-style-type: value; value takes various values.</pre>
+      <p>The list-style-type specifies the type of list-item marker in a list.</p>
       <h3>Example</h3>
+      list-style-type:
+      <input type="radio" name="list-style-type-opt" onclick="changeListStyleType('circle')" checked/>circle
+      <input type="radio" name="list-style-type-opt" onclick="changeListStyleType('square')"/>square
+
+      <ul> Name of students:
+        <li> Sara </li>
+        <li> Saveen </li>
+        <li> Blah </li>
+        <li> Blank </li>
+      </ul>
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="outline" class="outline">
+      <h3 class="property">Outline</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>outline: outline-color outline-style outline-width | initial | inherit</pre>
+      <p>An outline is a line that is drawn around elements (outside the borders) to make the element "stand out".</p>
       <h3>Example</h3>
+      outline:
+      <input type="radio" name="outline-opt" onclick="changeOutline('black solid thin')" checked/>black solid thin
+      <input type="radio" name="outline-opt" onclick="changeOutline('purple dotted thick')"/>purple dotted thick
+      <input type="radio" name="outline-opt" onclick="changeOutline('blue groove medium')"/>blue groove medium
+      <input type="radio" name="outline-opt" onclick="changeOutline('red solid thin')"/>red solid thin
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="outline-color" class="outline-color">
+      <h3 class="property">Outline Color</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>outline-color: invert | color | initial | inherit;</pre>
+      <p>An outline is a line that is drawn around elements (outside the borders) to make the element "stand out".</p>
+      <p>The outline-color property specifies the color of an outline.</p>
       <h3>Example</h3>
+      outline-color:
+      <input type="radio" name="outline-color-opt" onclick="changeOutlineColor('black')" checked/>black
+      <input type="radio" name="outline-color-opt" onclick="changeOutlineColor('purple')"/>purple
+      <input type="radio" name="outline-color-opt" onclick="changeOutlineColor('pink')"/>pink
+      <input type="radio" name="outline-color-opt" onclick="changeOutlineColor('red')"/>red
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="outline-offset" class="outline-offset">
+      <h3 class="property">Outline Offset</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>outline-offset: length | initial | inherit;</pre>
+      <p>The outline-offset property adds space between an outline and the edge or border of an element.</p>
       <h3>Example</h3>
+      outline-offset:
+      <input type="radio" name="outline-offset-opt" onclick="changeOutlineOffset('5px')" checked/>5px
+      <input type="radio" name="outline-offset-opt" onclick="changeOutlineOffset('10px')"/>10px
+      <input type="radio" name="outline-offset-opt" onclick="changeOutlineOffset('15px')"/>15px
+      <input type="radio" name="outline-offset-opt" onclick="changeOutlineOffset('20px')"/>20px
+    </div>
+    <hr>
+
+
+    <div id="outline-style" class="outline-style">
+      <h3 class="property">Outline Style</h3>
+      <h3>Usage</h3>
+      <pre>outline-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit</pre>
+      <p>An outline is a line that is drawn around elements (outside the borders) to make the element "stand out".</p>
+      <p>The outline-style property specifies the style of an outline.</p>
+      <h3>Example</h3>
+      outline-style:
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('none')" checked/>none
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('hidden')"/>hidden
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('dotted')"/>dotted
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('dashed')"/>dashed
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('solid')"/>solid
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('double')"/>double
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('groove')"/>groove
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('ridge')"/>ridge
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('inset')"/>inset
+      <input type="radio" name="outline-style-opt" onclick="changeOutlineStyle('outset')"/>outset
+    </div>
+    <hr>
+
+
+    <div id="outline-width" class="outline-width">
+      <h3 class="property">Outline Width</h3>
+      <h3>Usage</h3>
+      <pre>outline-width: medium | thin | thick | length | initial | inherit</pre>
+      <p>An outline is a line that is drawn around elements (outside the borders) to make the element "stand out".</p>
+      <p>The outline-width specifies the width of an outline.</p>
+      <h3>Example</h3>
+      outline-width:
+      <input type="radio" name="outline-width-opt" onclick="changeOutlineWidth('medium')" checked/>medium
+      <input type="radio" name="outline-width-opt" onclick="changeOutlineWidth('thin')"/>thin
+      <input type="radio" name="outline-width-opt" onclick="changeOutlineWidth('thick')"/>thick
+      <input type="radio" name="outline-width-opt" onclick="changeOutlineWidth('20px')"/>20px
+    </div>
+    <hr>
+
+
+    <div id="visibility">
+      <h3 class="property">Visibility</h3>
+      <h3>Usage</h3>
+      <pre>visibility: visible | hidden | collapse | initial | inherit</pre>
+      <p>The visibility property specifies whether or not an element is visible.</p>
+      <h3  class="visibility">Example</h3>
+      <input class="visibility" type="radio" name="visibility-opt" onclick="changeVisibility('visible')" checked/>visible
+      <input class="visibility" type="radio" name="visibility-opt" onclick="changeVisibility('hidden')"/>hidden
+      <input class="visibility" type="radio" name="visibility-opt" onclick="changeVisibility('collapse ')"/>collapse 
     </div>
     <hr>
 
