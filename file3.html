@@ -6,13 +6,131 @@
 
     <style>
       /* "global" css for this file */
-      pre {
+      pre, div p {
         text-indent: 25px;
+      }
+
+      .note {
+        font-style: italic;
+      }
+
+      .border-radius-ex {
+        height: 200px;
+        width: 200px;
+        border: 1px solid black;
+      }
+
+      input[type='number'] {
+        border: 1px solid #ccc;
+      }
+
+      .overflow-ex {
+        border: 1px solid black;
+        height: 200px;
+        width: 200px;
+        padding: 5px;
       }
     </style>
 
     <script>
+      // 1
+      function changeBorderBottomLeftRadius() {
+        var el = document.querySelectorAll("#border-bottom-left-radius .border-radius-ex")[0];
+        var val = document.getElementById("border-bottom-left-radius-val").value;
+        el.style.borderBottomLeftRadius = val + "px";
+      }
+
+      // 2
+      function changeBorderBottomRightRadius() {
+        var el = document.querySelectorAll("#border-bottom-right-radius .border-radius-ex")[0];
+        var val = document.getElementById("border-bottom-right-radius-val").value;
+        el.style.borderBottomRightRadius = val + "px";
+      }
+
+      // 3
+      function changeBorderRadius() {
+        var el = document.querySelectorAll("#border-radius .border-radius-ex")[0];
+        var val = document.getElementById("border-radius-val").value;
+        el.style.borderRadius = val + "px";
+      }
+
+      // 4
+      function changeBorderTopLeftRadius() {
+        var el = document.querySelectorAll("#border-top-left-radius .border-radius-ex")[0];
+        var val = document.getElementById("border-top-left-radius-val").value;
+        el.style.borderTopLeftRadius = val + "px";
+      }
+
+      // 5
+      function changeBorderTopRightRadius() {
+        var el = document.querySelectorAll("#border-top-right-radius .border-radius-ex")[0];
+        var val = document.getElementById("border-top-right-radius-val").value;
+        el.style.borderTopRightRadius = val + "px";
+      }
+
+      //6
+      function changeOverflow(newVal) {
+        var el = document.querySelectorAll("#overflow .overflow-ex")[0];
+        el.style.overflow = newVal;
+      }
+
+      //7
+      function changeOverflowY(newVal) {
+        var el = document.querySelectorAll("#overflow-y .overflow-ex")[0];
+        el.style.overflowY = newVal;
+      }
+
+      //8
+      function changeOverflowX(newVal) {
+        var el = document.querySelectorAll("#overflow-x .overflow-ex")[0];
+        el.style.overflowX = newVal;
+      }
+
+      //9
+      function changeFontSizeAdjust() {
+
+      }
+
+      //10
+      function changeFontFamily(newVal) {
+        var el = document.querySelectorAll("#font-family .font-ex")[0];
+        if(newVal === 'custom') {
+          newVal = "'Galada', cursive";
+        }
+        el.style.fontFamily = newVal;
+      }
+
+      //11
+      function changeFontSize() {
+        var el = document.querySelectorAll("#font-size .font-ex")[0];
+        var val = document.getElementById("font-size-val").value;
+        el.style.fontSize = val + "px";
+      }
+
+      //12
+      function changeFontStretch() {
+
+      }
+
+      //13
+      function changeFontStyle(newVal) {
+        var el = document.querySelectorAll("#font-style .font-ex")[0];
+        el.style.fontStyle = newVal;
+      }
+
+      //14
+      function changeFont() {
+
+      }
+
+      //15
+      function changeFontWeight() {
+        
+      }
     </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Galada" rel="stylesheet">
+
   </head>
   <body>
     <h2>Table of Contents</h2>
@@ -26,13 +144,13 @@
       <li><a href="#overflow">overflow</a></li>
       <li><a href="#overflow-y">overflow-y</a></li>
       <li><a href="#overflow-x">overflow-x</a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
+      <li><a href="#font-size-adjust">font-size-adjust</a></li>
+      <li><a href="#font-family">font-family</a></li>
+      <li><a href="#font-size">font-size</a></li>
+      <li><a href="#font-stretch">font-stretch</a></li>
+      <li><a href="#font-style">font-style</a></li>
+      <li><a href="#font">font</a></li>
+      <li><a href="#font-weight">font-weight</a></li>
       <li><a href="#"></a></li>
       <li><a href="#"></a></li>
       <li><a href="#"></a></li>
@@ -45,7 +163,11 @@
       <h3>Border Bottom Color</h3>
       <h3>Usage</h3>
       <pre>border-bottom-left-radius: length | % [length | %] | initial | inherit;</pre>
+      <p>This property modifies the curvature of the bottom left part of an element's border.</p>
       <h3>Example</h3>
+      border-bottom-left-radius:
+      <input type="number" id="border-bottom-left-radius-val" value="0" onchange="changeBorderBottomLeftRadius()"/>px<br>
+      <div class="border-radius-ex"></div>
     </div>
     <hr>
 
@@ -53,7 +175,11 @@
       <h3>Border Bottom Style</h3>
       <h3>Usage</h3>
       <pre>border-bottom-right-radius: length | % [length | %] | initial | inherit;</pre>
+      <p>This property modifies the curvature of the bottom right part of an element's border.</p>
       <h3>Example</h3>
+      border-bottom-right-radius:
+      <input type="number" id="border-bottom-right-radius-val" value="0" onchange="changeBorderBottomRightRadius()"/>px<br>
+      <div class="border-radius-ex"></div>
     </div>
     <hr>
 
@@ -61,7 +187,11 @@
       <h3>Border Color</h3>
       <h3>Usage</h3>
       <pre>border-radius: length | % [length | %] | initial | inherit;</pre>
+      <p>This property modifies the curvature of an element's border.</p>
       <h3>Example</h3>
+      border-radius:
+      <input type="number" id="border-radius-val" value="0" onchange="changeBorderRadius()"/>px<br>
+      <div class="border-radius-ex"></div>
     </div>
     <hr>
 
@@ -69,7 +199,11 @@
       <h3>Border Bottom Width</h3>
       <h3>Usage</h3>
       <pre>border-top-left-radius: length | % [length | %] | initial | inherit;</pre>
+      <p>This property modifies the curvature of the top left part of an element's border.</p>
       <h3>Example</h3>
+      border-top-left-radius:
+      <input type="number" id="border-top-left-radius-val" value="0" onchange="changeBorderTopLeftRadius()"/>px<br>
+      <div class="border-radius-ex"></div>
     </div>
     <hr>
 
@@ -77,95 +211,163 @@
       <h3>Border Left Color</h3>
       <h3>Usage</h3>
       <pre>border-top-right-radius: length | % [length | %] | initial | inherit;</pre>
+      <p>This property modifies the curvature of the top right part of an element's border.</p>
       <h3>Example</h3>
+      border-top-right-radius:
+      <input type="number" id="border-top-right-radius-val" value="0" onchange="changeBorderTopRightRadius()"/>px<br>
+      <div class="border-radius-ex"></div>
     </div>
     <hr>
 
     <div id="overflow">
-      <h3>Border Bottom</h3>
+      <h3>Overflow</h3>
       <h3>Usage</h3>
       <pre>overflow: visible | hidden | scroll | auto | initial | inherit;</pre>
+      <p>This property modifies the behavior both the HORIZONTAL and VERTICAL overflow of a text element.</p>
       <h3>Example</h3>
+      overflow:
+      <input type="radio" name="overflow-opt" onclick="changeOverflow('visible')"/>visible
+      <input type="radio" name="overflow-opt" onclick="changeOverflow('hidden')" checked/>hidden
+      <input type="radio" name="overflow-opt" onclick="changeOverflow('scroll')"/>scroll
+      <input type="radio" name="overflow-opt" onclick="changeOverflow('auto')"/>auto
+      <input type="radio" name="overflow-opt" onclick="changeOverflow('initial')"/>initial
+      <div class="overflow-ex" style="overflow:hidden">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
     </div>
     <hr>
 
     <div id="overflow-y">
-      <h3>Border Left Style</h3>
+      <h3>Overflow-Y</h3>
       <h3>Usage</h3>
       <pre>overflow-y: visible | hidden | scroll | auto | initial | inherit;</pre>
+      <p>This property modifies the behavior of the VERTICAL overflow of a text element.</p>
       <h3>Example</h3>
+      overflow-y:
+      <input type="radio" name="overflow-y-opt" onclick="changeOverflowY('visible')"/>visible
+      <input type="radio" name="overflow-y-opt" onclick="changeOverflowY('hidden')" checked/>hidden
+      <input type="radio" name="overflow-y-opt" onclick="changeOverflowY('scroll')"/>scroll
+      <input type="radio" name="overflow-y-opt" onclick="changeOverflowY('auto')"/>auto
+      <input type="radio" name="overflow-y-opt" onclick="changeOverflowY('initial')"/>initial
+      <div class="overflow-ex" style="overflow-y:hidden">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
     </div>
     <hr>
 
     <div id="overflow-x">
-      <h3>Border Left</h3>
+      <h3>Overflow-X</h3>
       <h3>Usage</h3>
       <pre>overflow-x: visible | hidden | scroll | auto | initial | inherit;</pre>
+      <p>This property modifies the behavior of the HORIZONTAL overflow of a text element.</p>
+      <h3>Example</h3>
+      overflow-x:
+      <input type="radio" name="overflow-x-opt" onclick="changeOverflowX('visible')"/>visible
+      <input type="radio" name="overflow-x-opt" onclick="changeOverflowX('hidden')" checked/>hidden
+      <input type="radio" name="overflow-x-opt" onclick="changeOverflowX('scroll')"/>scroll
+      <input type="radio" name="overflow-x-opt" onclick="changeOverflowX('auto')"/>auto
+      <input type="radio" name="overflow-x-opt" onclick="changeOverflowX('initial')"/>initial
+      <div class="overflow-ex" style="overflow-x:hidden">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+    </div>
+    <hr>
+
+    <div id="font-size-adjust">
+      <h3>Font Size Adjust</h3>
+      <h3>Usage</h3>
+      <pre>font-size-adjust: number | none | initial | inherit;</pre>
+      <p>This property allows the programmer to set the font size in case a secondary font is needed from a font-family.</p>
+      <p class="note">This property is only supported in Firefox!</p>
+      <h3>Example</h3>
+      font-size-adjust:
+      <input type="number" id="font-size-adjust-val" onclick="changeFontSizeAdjust()"/>px<br>
+      <div class="font-ex">this is a font-size-adjust test!</div>
+    </div>
+    <hr>
+
+    <div id="font-family">
+      <h3>Font Family</h3>
+      <h3>Usage</h3>
+      <pre>font-family: custom-font | generic-font | initial | inherit;</pre>
+      <p class="note">Note: custom fonts need to be linked to the current file</p>
+      <h3>Example</h3>
+      font-family:
+      <input type="radio" name="font-family-opt" onclick="changeFontFamily('custom')"/>custom (Galada)
+      <input type="radio" name="font-family-opt" onclick="changeFontFamily('serif')" checked/>serif
+      <input type="radio" name="font-family-opt" onclick="changeFontFamily('sans-serif')"/>sans-serif
+      <input type="radio" name="font-family-opt" onclick="changeFontFamily('cursive')"/>cursive
+      <input type="radio" name="font-family-opt" onclick="changeFontFamily('fantasy')"/>fantasy
+      <input type="radio" name="font-family-opt" onclick="changeFontFamily('monospace')"/>monospace
+      <div class="font-ex" style="font-size: 20px">this is a font-family test!</div>
+    </div>
+    <hr>
+
+    <div id="font-size">
+      <h3>Font Size</h3>
+      <h3>Usage</h3>
+      <pre>font-size: medium | xx-small | x-small | small | large | x-large | xx-large | smaller | larger | length | initial | inherit;</pre>
+      <h3>Example</h3>
+      <input type="number" id="font-size-val" value="16" min="0" onchange="changeFontSize()"/>px<br>
+      <div class="font-ex">this is a font-size test!</div>
+    </div>
+    <hr>
+
+    <div id="font-stretch">
+      <h3>Font Stretch</h3>
+      <h3>Usage</h3>
+      <pre>font-stretch: ultra-condensed | extra-condensed | condensed | semi-condensed | normal | semi-expanded | expanded | extra-expanded | ultra-expanded | initial | inherit;</pre>
+      <p class="note">Note: This property is not supported in any major browser :(</p>
+    </div>
+    <hr>
+
+    <div id="font-style">
+      <h3>Font Style</h3>
+      <h3>Usage</h3>
+      <pre>font-style: normal | italic | oblique | initial | inherit;</pre>
+      <h3>Example</h3>
+      font-style:
+      <input type="radio" name="font-style-opt" onclick="changeFontStyle('normal')"/>normal
+      <input type="radio" name="font-style-opt" onclick="changeFontStyle('italic')"/>italic
+      <input type="radio" name="font-style-opt" onclick="changeFontStyle('oblique')"/>oblique
+      <input type="radio" name="font-style-opt" onclick="changeFontStyle('initial')" checked/>initial
+      <div class="font-ex">This is a font-style test!</div>
+    </div>
+    <hr>
+
+    <div id="font">
+      <h3>Font</h3>
+      <h3>Usage</h3>
+      <pre>font: font-style font-variant font-weight font-size/line-height font-family | caption | icon | menu | message-box | small-caption | status-bar | initial | inherit;</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="">
-      <h3></h3>
+    <div id="font-weight">
+      <h3>Font Weight</h3>
       <h3>Usage</h3>
-      <pre></pre>
+      <pre>font-weight: normal | bold | bolder | lighter | number | initial | inherit;</pre>
       <h3>Example</h3>
-    </div>
-    <hr>
+      font-weight:
+      <input type="radio" name="font-weight-opt" onclick="changeFontWeight('normal')"/>normal
+      <input type="radio" name="font-weight-opt" onclick="changeFontWeight('bold')"/>bold
+      <input type="radio" name="font-weight-opt" onclick="changeFontWeight('bolder')"/>bolder
+      <input type="radio" name="font-weight-opt" onclick="changeFontWeight('lighter')"/>lighter
+      <input type="radio" name="font-weight-opt" onclick="changeFontWeight('initial')" checked/>initial<br>
 
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
+      <select id="font-weight-select" onchange="changeFontWeight()">
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+        <option value="500">500</option>
+        <option value="600">600</option>
+        <option value="700">700</option>
+        <option value="800">800</option>
+        <option value="900">900</option>
+      </select>
 
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-    <div id="">
-      <h3></h3>
-      <h3>Usage</h3>
-      <pre></pre>
-      <h3>Example</h3>
+      <div class="font-ex">This is a font-weight example!</div>
     </div>
     <hr>
 
