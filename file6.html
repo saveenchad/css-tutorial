@@ -5,42 +5,490 @@
     <meta charset="utf-8">
 
     <style>
-      pre {
+      pre, div p {
         text-indent: 25px;
       }
+
+      .note {
+        font-style: italic;
+      }
+
+      .property {
+        text-decoration: underline;
+      }
+
+      .columns {
+        -webkit-columns: auto; /* Chrome, Safari, Opera */
+        -moz-columns: auto; /* Firefox */
+        columns: auto;
+      }
+
+      .column-width {
+        -webkit-column-width: auto; /* Chrome, Safari, Opera */
+        -moz-column-width: auto; /* Firefox */
+        column-width: auto;
+      }
+
+      .column-span {
+        -webkit-column-span: 1; /* Chrome, Safari, Opera */
+        column-span: 1;
+      }
+
+      .column-rule-width {
+        /* Chrome, Safari, Opera */
+        -webkit-column-gap: 40px;
+        -webkit-column-rule-style: outset;
+        -webkit-column-rule-width: medium;
+
+        /* Firefox */
+        -moz-column-gap: 40px;
+        -moz-column-rule-style: outset;
+        -moz-column-rule-width: medium;
+
+        column-gap: 40px;
+        column-rule-style: outset;
+        column-rule-width: medium;
+      }
+
+      .column-rule-style {
+        /* Chrome, Safari, Opera */
+        -webkit-column-gap: 40px;
+        -webkit-column-rule-style: none;
+
+        /* Firefox */
+        -moz-column-gap: 40px;
+        -moz-column-rule-style: none;
+
+        column-gap: 40px;
+        column-rule-style: none;
+      }
+
+      .column-rule-color {
+        /* Chrome, Safari, Opera */
+        -webkit-column-gap: 40px;
+        -webkit-column-rule-style: solid;
+        -webkit-column-rule-color: black;
+
+        /* Firefox */
+        -moz-column-gap: 40px;
+        -moz-column-rule-style: solid;
+        -moz-column-rule-color: black;
+
+        column-gap: 40px;
+        column-rule-style: solid;
+        column-rule-color: black;
+      }
+
+      .column-rule {
+        -webkit-column-rule: 2px solid black; /* Chrome, Safari, Opera */
+        -moz-column-rule: 2px solid black; /* Firefox */
+        column-rule: 2px solid black;
+      }
+
+      .column-gap {
+        -webkit-column-gap: normal; /* Chrome, Safari, Opera */
+        -moz-column-gap: normal; /* Firefox */
+        column-gap: normal;
+      }
+
+      .column-fill {
+        -moz-column-fill: balance; /* Firefox */
+        column-fill: balance;
+      }
+
+      .column-count {
+        -webkit-column-count: auto; /* Chrome, Safari, Opera */
+        -moz-column-count: auto; /* Firefox */
+        column-count: auto;
+      }
+
     </style>
+    <script>
+      function changeColumns(newVal) {
+        var el = document.querySelectorAll("#columns")[0];
+        el.style.columns = newVal;
+      }
+
+      function changeColumnWidth(newVal) {
+        var el = document.querySelectorAll("#column-width")[0];
+        el.style.columnWidth = newVal;
+      }
+
+      function changeColumnSpan(newVal) {
+        var el = document.querySelectorAll("#column-span")[0];
+        el.style.columnSpan = newVal;
+      }
+
+      function changeColumnRuleWidth(newVal) {
+        var el = document.querySelectorAll("#column-rule-width")[0];
+        el.style.columnRuleWidth = newVal;
+      }
+
+      function changeColumnRuleStyle(newVal) {
+        var el = document.querySelectorAll("#column-rule-style")[0];
+        el.style.columnRuleStyle = newVal;
+      }
+
+      function changeColumnRuleColor(newVal) {
+        var el = document.querySelectorAll("#column-rule-color")[0];
+        el.style.columnRuleColor = newVal;
+      }
+
+      function changeColumnRule(newVal) {
+        var el = document.querySelectorAll("#column-rule")[0];
+        el.style.columnRule = newVal;
+      }
+
+      function changeColumnGap(newVal) {
+        var el = document.querySelectorAll("#column-gap")[0];
+        el.style.columnGap = newVal;
+      }
+
+      function changeColumnFill(newVal) {
+        var el = document.querySelectorAll("#column-fill")[0];
+        el.style.columnFill = newVal;
+      }
+
+      function changeColumnCount(newVal) {
+        var el = document.querySelectorAll("#column-count")[0];
+        el.style.columnCount = newVal;
+      }
+
+
+    </script>
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#columns-div">columns</a></li>
+      <li><a href="#column-width-div">column-width</a></li>
+      <li><a href="#column-span-div">column-span</a></li>
+      <li><a href="#column-rule-width-div">column-rule-width</a></li>
+      <li><a href="#column-rule-style-div">column-rule-style</a></li>
+      <li><a href="#column-rule-color-div">column-rule-color</a></li>
+      <li><a href="#column-rule-div">column-rule</a></li>
+      <li><a href="#column-gap-div">column-gap</a></li>
+      <li><a href="#column-fill-div">column-fill</a></li>
+      <li><a href="#column-count-div">column-count</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
     </ol>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="columns-div">
+      <h3 class="property">Columns</h3>
+      <h3>Usage</h3>
+      <pre>columns: auto | column-width column-count | initial | inherit</pre>
+      <p>The columns property is a shorthand property for setting column-width and column-count.</p>
+      <h3>Example</h3>
+      columns:
+      <input type="radio" name="columns-opt" onclick="changeColumns('auto')" checked/>auto
+      <input type="radio" name="columns-opt" onclick="changeColumns('100px 4')"/>100px 4
+      <input type="radio" name="columns-opt" onclick="changeColumns('150px 3')"/>150px 3
+      <input type="radio" name="columns-opt" onclick="changeColumns('initial')"/>initial
+      <input type="radio" name="columns-opt" onclick="changeColumns('inherit')"/>inherit
+
+      <p id="columns" class="columns">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="column-width-div">
+      <h3 class="property">Column Width</h3>
+      <h3>Usage</h3>
+      <pre>column-width: auto | length | initial | inherit;</pre>
+      <p>The column-width property specifies a suggested, optimal width for the columns.</p>
+      <p class="note">Note: The column-width property is not supported in Internet Explorer 9 and earlier versions.</p>
+      <h3>Example</h3>
+      column-width:
+      <input type="radio" name="column-width-opt" onclick="changeColumnWidth('auto')" checked/>auto
+      <input type="radio" name="column-width-opt" onclick="changeColumnWidth('100px')"/>100px
+      <input type="radio" name="column-width-opt" onclick="changeColumnWidth('150px')"/>150px
+      <input type="radio" name="column-width-opt" onclick="changeColumnWidth('400px')"/>400px
+      <input type="radio" name="column-width-opt" onclick="changeColumnWidth('initial')"/>initial
+      <input type="radio" name="column-width-opt" onclick="changeColumnWidth('inherit')"/>inherit
+
+      <p id="column-width" class="column-width">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="column-span-div" class="column-span">
+      <h3 class="property">Column Span</h3>
+      <h3>Usage</h3>
+      <pre>column-span: 1 | all | initial | inherit</pre>
+      <p>The column-span property specifies how many columns an element should span across.</p>
+      <h3>Example</h3>
+      column-span:
+      <input type="radio" name="column-span-opt" onclick="changeColumnSpan('1')" checked/>1
+      <input type="radio" name="column-span-opt" onclick="changeColumnSpan('all')"/>all
+      <input type="radio" name="column-span-opt" onclick="changeColumnSpan('initial')"/>initial
+      <input type="radio" name="column-span-opt" onclick="changeColumnSpan('inherit')"/>inherit
+      <div style="-webkit-column-count: 4; -moz-column-count: 4; column-count: 4;" class="column-span">
+        <h3 id="column-span">This is the header.This is the header.This is the header.This is the header.This is the header.This is the header.This is the header.This is the header.This is the header.</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+
+    <div id="column-rule-width-div">
+      <h3 class="property">Column Rule Width</h3>
+      <h3>Usage</h3>
+      <pre>column-rule-width: medium | thin | thick | length | initial | inherit</pre>
+      <p>The column-rule-width property specifies the width of the rule between columns.</p>
+      <h3>Example</h3>
+      column-rule-width:
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('medium')" checked/>medium
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('thin')"/>thin
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('thick')"/>thick
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('20px')"/>20px
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('100px')"/>100px
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('initial')"/>initial
+      <input type="radio" name="column-rule-width-opt" onclick="changeColumnRuleWidth('inherit')"/>inherit
+      <p style="-webkit-column-width: 400px; -moz-column-width: 400px; column-width: 400px;" id="column-rule-width" class="column-rule-width">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="column-rule-style-div">
+      <h3 class="property">Column Rule Style</h3>
+      <h3>Usage</h3>
+      <pre>column-rule-style: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | initial | inherit</pre>
+      <p>The column-rule-style property specifies the style of the rule between columns.</p>
+      <h3>Example</h3>
+      column-rule-style:
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('none')" checked/>none
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('hidden')"/>hidden
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('dotted')"/>dotted
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('dashed')"/>dashed
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('solid')"/>solid
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('double')"/>double
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('groove')"/>groove
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('ridge')"/>ridge
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('inset')"/>inset
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('outset')"/>outset
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('initial')"/>initial
+      <input type="radio" name="column-rule-style-opt" onclick="changeColumnRuleStyle('inherit')"/>inherit
+      <p style="-webkit-column-width: 400px; -moz-column-width: 400px; column-width: 400px;" id="column-rule-style" class="column-rule-style">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="column-rule-color-div">
+      <h3 class="property">Column Rule Color</h3>
+      <h3>Usage</h3>
+      <pre>column-rule-color: color | initial | inherit</pre>
+      <p>The column-rule-color property specifies the color of the rule between columns.</p>
+      <h3>Example</h3>
+      column-rule-color:
+      <input type="radio" name="column-rule-color-opt" onclick="changeColumnRuleColor('black')" checked/>black
+      <input type="radio" name="column-rule-color-opt" onclick="changeColumnRuleColor('red')"/>red
+      <input type="radio" name="column-rule-color-opt" onclick="changeColumnRuleColor('orange')"/>orange
+      <input type="radio" name="column-rule-color-opt" onclick="changeColumnRuleColor('initial')"/>initial
+      <input type="radio" name="column-rule-color-opt" onclick="changeColumnRuleColor('inherit')"/>inherit
+      <p style="-webkit-column-width: 400px; -moz-column-width: 400px; column-width: 400px;" id="column-rule-color" class="column-rule-color">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="column-rule-div">
+      <h3 class="property">Column Rule</h3>
+      <h3>Usage</h3>
+      <pre>column-rule: column-rule-width column-rule-style column-rule-color | initial | inherit</pre>
+      <p>The column-rule property is a shorthand property for setting all the column-rule-* properties.</p>
+      <p>The column-rule property sets the width, style, and color of the rule between columns.</p>
+      <h3>Example</h3>
+      column-rule:
+      <input type="radio" name="column-rule-opt" onclick="changeColumnRule('2px solid black')" checked/>2px solid black
+      <input type="radio" name="column-rule-opt" onclick="changeColumnRule('80px dotted red')"/>80px dotted red
+      <input type="radio" name="column-rule-opt" onclick="changeColumnRule('10px double orange')"/>10px double orange
+      <input type="radio" name="column-rule-opt" onclick="changeColumnRule('initial')"/>initial
+      <input type="radio" name="column-rule-opt" onclick="changeColumnRule('inherit')"/>inherit
+      <p style="-webkit-column-width: 400px; -moz-column-width: 400px; column-width: 400px;" id="column-rule" class="column-rule">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+    <div id="column-gap-div">
+      <h3 class="property">Column Gap</h3>
+      <h3>Usage</h3>
+      <pre>column-gap: length | normal | initial | inherit</pre>
+      <p>The column-gap property specifies the gap between the columns.</p>
+      <p class="note">Note: If there is a column-rule between columns, it will appear in the middle of the gap.</p>
+      <h3>Example</h3>
+      column-gap:
+      <input type="radio" name="column-gap-opt" onclick="changeColumnGap('normal')" checked/>normal
+      <input type="radio" name="column-gap-opt" onclick="changeColumnGap('10px')"/>10px
+      <input type="radio" name="column-gap-opt" onclick="changeColumnGap('50px')"/>50px
+      <input type="radio" name="column-gap-opt" onclick="changeColumnGap('initial')"/>initial
+      <input type="radio" name="column-gap-opt" onclick="changeColumnGap('inherit')"/>inherit
+      <p style="-webkit-column-width: 400px; -moz-column-width: 400px; column-width: 400px;" id="column-gap" class="column-gap">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+    <div id="column-fill-div">
+      <h3 class="property">Column Fill</h3>
+      <h3>Usage</h3>
+      <pre>column-fill: balance | auto | initial | inherit</pre>
+      <p>The column-fill property specifies how to fill columns, balanced or not.</p>
+      <h3>Example</h3>
+      column-fill:
+      <input type="radio" name="column-fill-opt" onclick="changeColumnFill('balance')" checked/>balance
+      <input type="radio" name="column-fill-opt" onclick="changeColumnFill('auto')"/>auto
+      <input type="radio" name="column-fill-opt" onclick="changeColumnFill('initial')"/>initial
+      <input type="radio" name="column-fill-opt" onclick="changeColumnFill('inherit')"/>inherit
+      <p style="-webkit-column-count: 3; -moz-column-count: 3; column-count: 3;" id="column-fill" class="column-fill">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="column-count-div">
+      <h3 class="property">Column Count</h3>
+      <h3>Usage</h3>
+      <pre>column-count: number | auto | initial | inherit</pre>
+      <p>The column-count property specifies the number of columns an element should be divided into.</p>
+      <h3>Example</h3>
+      column-count:
+      <input type="radio" name="column-count-opt" onclick="changeColumnCount('auto')" checked/>auto
+      <input type="radio" name="column-count-opt" onclick="changeColumnCount('3')"/>3
+      <input type="radio" name="column-count-opt" onclick="changeColumnCount('6')"/>6
+      <input type="radio" name="column-count-opt" onclick="changeColumnCount('initial')"/>initial
+      <input type="radio" name="column-count-opt" onclick="changeColumnCount('inherit')"/>inherit
+      <p id="column-count" class="column-count">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
   </body>
 </html>
