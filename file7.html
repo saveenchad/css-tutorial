@@ -150,6 +150,131 @@
         width: 500px;
       }
 
+      .keyframes {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: purple;
+        position: relative;
+        -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+        animation: mymove 5s infinite;
+      }
+
+      /* Chrome, Safari, Opera */
+      @-webkit-keyframes mymove {
+          from {left: 0px;}
+          to {left: 200px;}
+      }
+
+      @keyframes mymove {
+          from {left: 0px;}
+          to {left: 200px;}
+      }
+
+      .left {
+        position: absolute;
+        left: auto;
+        width: 200px;
+        height: 120px;
+        border: 3px solid red;
+      }
+
+      .top {
+        position: absolute;
+        top: auto;
+        width: 200px;
+        height: 120px;
+        border: 3px solid red;
+      }
+
+      .right {
+        position: absolute;
+        right: auto;
+        width: 200px;
+        height: 120px;
+        border: 3px solid red;
+      }
+
+      .bottom {
+        position: absolute;
+        bottom: auto;
+        width: 200px;
+        height: 120px;
+        border: 3px solid red;
+      }
+
+      .opacity {
+        background-color: red;
+        opacity: 1;
+      }
+
+      #main {
+        width: 400px;
+        height: 150px;
+        border: 1px solid #c3c3c3;
+        display: -webkit-flex; /* Safari */
+        display: flex;
+      }
+
+      #main div {
+          width: 70px;
+          height: 70px;
+      }
+
+      /* Safari 6.1+ */
+      div#myRedDIV   {-webkit-order: 1;}
+      div#myBlueDIV  {-webkit-order: 2;}
+      div#myPurpleDIV {-webkit-order: 4;}
+      div#myPinkDIV  {-webkit-order: 3;}
+
+      /* Standard syntax */
+      div#myRedDIV   {order: 1;}
+      div#myBlueDIV  {order: 2;}
+      div#myPurpleDIV {order: 4;}
+      div#myPinkDIV  {order: 3;}
+
+      #div4 {
+        position: relative;
+        height: 150px;
+        width: 150px;
+        margin: 50px;
+        padding: 10px;
+        border: 1px solid black;
+        -webkit-perspective: 200px; /* Chrome, Safari, Opera  */
+        perspective: 200px;
+      }
+
+      #div5 {
+        padding: 50px;
+        position: absolute;
+        border: 1px solid black;
+        background-color: red;
+        -webkit-transform: rotateX(45deg); /* Chrome, Safari, Opera  */
+        transform: rotateX(45deg);
+      }
+
+      #div6 {
+        position: relative;
+        height: 150px;
+        width: 150px;
+        margin: 50px;
+        padding: 10px;
+        border: 1px solid black;
+        -webkit-perspective: 150px; /* Chrome, Safari, Opera */
+        -webkit-perspective-origin: 10% 10%; /* Chrome, Safari, Opera */
+        perspective: 150px;
+        perspective-origin: 10% 10%;
+      }
+
+      #div7 {
+        padding: 50px;
+        position: absolute;
+        border: 1px solid black;
+        background-color: red;
+        -webkit-transform: rotateX(45deg); /* Chrome, Safari, Opera */
+        transform: rotateX(45deg);
+      }
+
 
 
     </style>
@@ -200,6 +325,33 @@
         el.style.transitionTimingFunction = newVal;
       }
 
+      function changeLeft(newVal) {
+        var el = document.querySelectorAll("#left")[0];
+        el.style.left = newVal;
+      }
+
+      function changeTop(newVal) {
+        var el = document.querySelectorAll("#top")[0];
+        el.style.top = newVal;
+      }
+
+      function changeRight(newVal) {
+        var el = document.querySelectorAll("#right")[0];
+        el.style.right = newVal;
+      }
+
+      function changeBottom(newVal) {
+        var el = document.querySelectorAll("#bottom")[0];
+        el.style.bottom = newVal;
+      }
+
+      function changeOpacity(newVal) {
+        var el = document.querySelectorAll("#opacity")[0];
+        el.style.opacity = newVal;
+      }
+
+
+
     </script>
 
   </head>
@@ -218,15 +370,15 @@
       <li><a href="#transition-duration-div">transition-duration</a></li>
       <li><a href="#transition-property-div">transition-property</a></li>
       <li><a href="#transition-timing-function-div">transition-timing-function</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
+      <li><a href="#keyframes-div">keyframes</a></li>
+      <li><a href="#left-div">left</a></li>
+      <li><a href="#top-div">top</a></li>
+      <li><a href="#right-div">right</a></li>
+      <li><a href="#bottom-div">bottom</a></li>
+      <li><a href="#opacity">opacity</a></li>
+      <li><a href="#order-div">order</a></li>
+      <li><a href="#perspective-div">perspective</a></li>
+      <li><a href="#perspective-origin-div">perspective-origin</a></li>
     </ol>
     <hr>
 
@@ -410,90 +562,157 @@
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="keyframes-div">
+      <h3 class="property">@Keyframes</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>@keyframes animationname {keyframes-selector {css-styles;}}</pre>
+      <p>The @keyframes rule specifies the animation code.</p>
+      <p>The animation is created by gradually changing from one set of CSS styles to another.</p>
       <h3>Example</h3>
+      @keyframes:
+      <div id="keyframes" class="keyframes"></div>
     </div>
     <hr>
 
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="left-div">
+      <h3 class="property">Left</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>left: auto | length | initial | inherit</pre>
+      <p>For absolutely positioned elements, the left property sets the left edge of an element to a unit to the left/right of the left edge of its nearest positioned ancestor.</p>
+      <p class="note">Note: If an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.</p>
       <h3>Example</h3>
+      left:
+      <input type="radio" name="left-opt" onclick="changeLeft('auto')" checked/>auto
+      <input type="radio" name="left-opt" onclick="changeLeft('10px')"/>10px
+      <input type="radio" name="left-opt" onclick="changeLeft('50px')"/>50px
+      <input type="radio" name="left-opt" onclick="changeLeft('100px')"/>100px
+
+      <div style="position: relative; width: 400px; height: 200px; border: 3px solid black;"><div class="left" id="left"></div></div>
     </div>
     <hr>
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="top-div">
+      <h3 class="property">Top</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>top: auto | length | initial | inherit</pre>
+      <p>For absolutely positioned elements, the top property sets the top edge of an element to a unit above/below the top edge of its nearest positioned ancestor.</p>
+      <p class="note">Note: If an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.</p>
       <h3>Example</h3>
+      top:
+      <input type="radio" name="top-opt" onclick="changeTop('auto')" checked/>auto
+      <input type="radio" name="top-opt" onclick="changeTop('10px')"/>10px
+      <input type="radio" name="top-opt" onclick="changeTop('50px')"/>50px
+      <input type="radio" name="top-opt" onclick="changeTop('100px')"/>100px
+
+      <div style="position: relative; width: 400px; height: 200px; border: 3px solid black;"><div class="top" id="top"></div></div>
     </div>
     <hr>
 
 
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
+    <div id="right-div">
+      <h3 class="property">Right</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>right: auto | length | initial | inherit</pre>
+      <p>For absolutely positioned elements, the right property sets the right edge of an element to a unit to the left/right of the right edge of its nearest positioned ancestor.</p>
+      <p class="note">Note: If an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.</p>
       <h3>Example</h3>
-    </div>
-    <hr>
+      right:
+      <input type="radio" name="right-opt" onclick="changeRight('auto')" checked/>auto
+      <input type="radio" name="right-opt" onclick="changeRight('10px')"/>10px
+      <input type="radio" name="right-opt" onclick="changeRight('50px')"/>50px
+      <input type="radio" name="right-opt" onclick="changeRight('100px')"/>100px
 
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
-    </div>
-    <hr>
-
-
-
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
-      <h3 class="property">Property Name</h3>
-      <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
-      <h3>Example</h3>
+      <div style="position: relative; width: 400px; height: 200px; border: 3px solid black;"><div class="right" id="right"></div></div>
     </div>
     <hr>
 
 
 
-    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+    <div id="bottom-div">
+      <h3 class="property">Bottom</h3>
+      <h3>Usage</h3>
+      <pre>bottom: auto | length | initial | inherit</pre>
+      <p>For absolutely positioned elements, the bottom property sets the bottom edge of an element to a unit above/below the bottom edge of its nearest positioned ancestor.</p>
+      <p class="note">Note: If an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.</p>
+      <h3>Example</h3>
+      bottom:
+      <input type="radio" name="bottom-opt" onclick="changeBottom('auto')" checked/>auto
+      <input type="radio" name="bottom-opt" onclick="changeBottom('10px')"/>10px
+      <input type="radio" name="bottom-opt" onclick="changeBottom('50px')"/>50px
+      <input type="radio" name="bottom-opt" onclick="changeBottom('100px')"/>100px
+
+      <div style="position: relative; width: 400px; height: 200px; border: 3px solid black;"><div class="bottom" id="bottom"></div></div>
+    </div>
+    <hr>
+
+
+
+    <div id="opacity" class="opacity">
+      <h3 class="property">Opacity</h3>
+      <h3>Usage</h3>
+      <pre>opacity: number | initial | inherit</pre>
+      <p>The opacity property sets the opacity level for an element.</p>
+      <h3>Example</h3>
+      opacity:
+      <input type="radio" name="opacity-opt" onclick="changeOpacity('0.2')"/>0.2
+      <input type="radio" name="opacity-opt" onclick="changeOpacity('0.5')"/>0.5
+      <input type="radio" name="opacity-opt" onclick="changeOpacity('0.7')"/>0.7
+      <input type="radio" name="opacity-opt" onclick="changeOpacity('1')" checked/>1
+    </div>
+    <hr>
+
+
+
+    <div id="order-div">
       <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>order: number | initial | inherit</pre>
+      <p>The order property specifies the order of a flexible item relative to the rest of the flexible items inside the same container.</p>
       <h3>Example</h3>
+      order:
+      <div id="main">
+        <div style="background-color:red;" id="myRedDIV"></div>
+        <div style="background-color:blue;" id="myBlueDIV"></div>
+        <div style="background-color:purple;" id="myPurpleDIV"></div>
+        <div style="background-color:pink;" id="myPinkDIV"></div>
+      </div>
+    </div>
+    <hr>
+
+
+
+    <div id="perspective-div" class="perspective">
+      <h3 class="property">Perspective</h3>
+      <h3>Usage</h3>
+      <pre>perspective: length | none</pre>
+      <p>The perspective property defines how many pixels a 3D element is placed from the view. This property allows you to change the perspective on how 3D elements are viewed.</p>
+      <p>When defining the perspective property for an element, it is the CHILD elements that get the perspective view, NOT the element itself.</p>
+      <h3>Example</h3>
+      perspective: 200px
+      
+      <div id="div4" class="div4">
+        <div id="div5" class="div5">Sara</div>
+      </div>
+    </div>
+    <hr>
+
+
+
+    <div id="perspective-origin-div" class="perspective">
+      <h3 class="property">Perspective Origin</h3>
+      <h3>Usage</h3>
+      <pre>perspective-origin: x-axis y-axis | initial | inherit</pre>
+      <p>The perspective-origin property defines where a 3D element is based in the x- and the y-axis. This property allows you to change the bottom position of 3D elements.</p>
+      <p>When defining the perspective-origin property for an element, it is the CHILD elements that are positioned, NOT the element itself.</p>
+      <h3>Example</h3>
+      perspective-origin: 10% 10%
+
+      <div id="div6">
+        <div id="div7">Sara</div>
+      </div>
     </div>
     <hr>
 
