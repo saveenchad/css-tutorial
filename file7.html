@@ -5,42 +5,497 @@
     <meta charset="utf-8">
 
     <style>
-      pre {
+      pre, div p {
         text-indent: 25px;
       }
+
+      .note {
+        font-style: italic;
+      }
+
+      .property {
+        text-decoration: underline;
+      }
+
+      .text-decoration {
+        text-decoration: none;
+      }
+
+      .text-decoration-color {
+        -moz-text-decoration-color: black; /* Code for Firefox */
+        text-decoration-color: black;
+      }
+
+      .text-indent {
+        text-indent: 20px;
+      }
+
+      .transform {
+        transform: none;
+      }
+
+      .transform-origin {
+        transform-origin: initial;
+      }
+
+      #div1 {
+        position: relative;
+        height: 200px;
+        width: 200px;
+        margin: 100px;
+        padding: 10px;
+        border: 1px solid black;
+      }
+
+      #div2 {
+          padding: 50px;
+          position: absolute;
+          border: 1px solid black;
+          background-color: pink;
+          -webkit-transform: rotateY(60deg); /* Chrome, Safari, Opera */
+          -webkit-transform-style: preserve-3d; /* Chrome, Safari, Opera */
+          transform: rotateY(60deg);
+          transform-style: preserve-3d;
+      }
+
+      #div3 {
+          padding: 40px;
+          position: absolute;
+          border: 1px solid black;
+          background-color: purple;
+          -webkit-transform: rotateY(-60deg); /* Chrome, Safari, Opera */
+          transform: rotateY(-60deg);
+
+      }
+
+      .transition {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: pink;
+        transition: width 2s;
+        -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
+      }
+
+      .transition:hover {
+        width: 500px;
+      }
+
+      .transition-delay {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: pink;
+        transition: width 2s;
+        -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
+        -webkit-transition-delay: 2s; /* Safari */
+        transition-delay: 2s;
+      }
+      .transition-delay:hover {
+        width: 500px;
+      }
+
+      .transition-duration {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: pink;
+        transition: width 2s;
+        -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
+        -webkit-transition-duration: 500ms; /* Safari */
+        transition-duration: 500ms;
+      }
+      .transition-duration:hover {
+        width: 500px;
+      }
+
+      .transition-property {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: pink;
+        transition: width, height;
+        -webkit-transition: width, height; /* Safari 3.1 to 6.0 */
+      }
+      .transition-property:hover {
+        width: 500px;
+        height: 300px;
+      }
+
+      .transition {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: pink;
+        transition: width 2s;
+        -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
+      }
+
+      .transition:hover {
+        width: 500px;
+      }
+
+      .transition-timing-function {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: pink;
+        transition: width 2s;
+        -webkit-transition: width 2s; /* Safari 3.1 to 6.0 */
+        -webkit-transition-timing-function: linear; /* Safari and Chrome */
+        transition-timing-function: linear;
+      }
+
+      .transition-timing-function:hover {
+        width: 500px;
+      }
+
+
+
     </style>
+
+    <script>
+      
+      function changeTextDecoration(newVal) {
+        var el = document.querySelectorAll("#text-decoration")[0];
+        el.style.textDecoration = newVal;
+      }
+
+      function changeTextDecorationColor(newVal) {
+        var el = document.querySelectorAll("#text-decoration-color")[0];
+        el.style.textDecorationColor = newVal;
+      }
+
+      function changeTextIndent(newVal) {
+        var el = document.querySelectorAll("#text-indent")[0];
+        el.style.textIndent = newVal;
+      }
+
+      function changeTransform(newVal) {
+        var el = document.querySelectorAll("#transform")[0];
+        el.style.transform = newVal;
+      }
+
+      function changeTransformOrigin(newVal) {
+        var el = document.querySelectorAll("#transform")[0];
+        if (newVal == "initial")
+          el.style.transform = "none"
+        else
+          el.style.transform = "rotate(45deg)";
+        el.style.transformOrigin = newVal;
+      }
+
+      function changeTransformStyle(newVal) {
+        var el = document.querySelectorAll("#transform-style")[0];
+        el.style.transformStyle = newVal;
+      }
+
+      function changeTransitionDuration(newVal) {
+        var el = document.querySelectorAll("#transition-duration")[0];
+        el.style.transitionDuration = newVal;
+      }
+
+      function changeTransitionTimingFunction(newVal) {
+        var el = document.querySelectorAll("#transition-timing-function")[0];
+        el.style.transitionTimingFunction = newVal;
+      }
+
+    </script>
+
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#text-decoration">text-decoration</a></li>
+      <li><a href="#text-decoration-color">text-decoration-color</a></li>
+      <li><a href="#text-indent-div">text-indent</a></li>
+      <li><a href="#transform">transform</a></li>
+      <li><a href="#transform-origin">transform-origin</a></li>
+      <li><a href="#transform-style">transform-style</a></li>
+      <li><a href="#transition-div">transition</a></li>
+      <li><a href="#transition-delay-div">transition-delay</a></li>
+      <li><a href="#transition-duration-div">transition-duration</a></li>
+      <li><a href="#transition-property-div">transition-property</a></li>
+      <li><a href="#transition-timing-function-div">transition-timing-function</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
     </ol>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+
+
+    <div id="text-decoration" class="text-decoration">
+      <h3 class="property">Text Decoration</h3>
+      <h3>Usage</h3>
+      <pre>text-decoration: none | underline | overline | line-through | initial | inherit</pre>
+      <p>The text-decoration property specifies the decoration added to text.</p>
+      <h3>Example</h3>
+      text-decoration:
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('none')" checked//>none
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('underline')">underline
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('overline')"/>overline
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('line-through')"/>line-through
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('initial')"/>initial
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('inherit')"/>inherit
+    </div>
+
+
+
+    <hr>
+    <div id="text-decoration-color" class="text-decoration-color">
+      <h3 class="property">Text Decoration Color</h3>
+      <h3>Usage</h3>
+      <pre>text-decoration-color: color | initial | inherit</pre>
+      <p>The text-decoration-color property specifies the color of the text-decoration (underlines, overlines, linethroughs).</p>
+      <p class="note">Note: The text-decoration-color property will only have an effect on elements with a visible text-decoration.</p>
+      <h2>Note: The text-decoration-color property is not supported in any of the major browsers.</h2>
+      <h3>Example</h3>
+      text-decoration-color:
+      <input type="radio" name="text-decoration-color-opt" onclick="changeTextDecorationColor('black')" checked/>black
+      <input type="radio" name="text-decoration-color-opt" onclick="changeTextDecorationColor('red')">red
+      <input type="radio" name="text-decoration-color-opt" onclick="changeTextDecorationColor('purple')"/>purple
+    </div>
+    <hr>
+
+
+    <div id="text-indent-div">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>text-indent: length | initial | inherit</pre>
+      <p>The text-indent property specifies the indentation of the first line in a text-block.</p>
+      <h3>Example</h3>
+      text-indent:
+      <input type="radio" name="text-indent-opt" onclick="changeTextIndent('20px')" checked/>20px
+      <input type="radio" name="text-indent-opt" onclick="changeTextIndent('50px')">50px
+      <input type="radio" name="text-indent-opt" onclick="changeTextIndent('100px')"/>100px
+
+      <p id="text-indent" class="text-indent">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <hr>
+
+
+    <div id="transform" class="transform" style="background-color:pink;">
+      <h3 class="property">Transform</h3>
+      <h3>Usage</h3>
+      <pre>transform: none | transform-functions | initial | inherit</pre>
+      <p>The transform property applies a 2D or 3D transformation to an element. This property allows you to rotate, scale, move, skew, etc., elements.</p>
+      <h3>Example</h3>
+      transform:
+      <input type="radio" name="transform-opt" onclick="changeTransform('none')" checked/>none
+      <input type="radio" name="transform-opt" onclick="changeTransform('matrix(0.866,0.5,-0.5,0.866,0,0)')">matrix(0.866,0.5,-0.5,0.866,0,0)
+      <input type="radio" name="transform-opt" onclick="changeTransform('rotate(10deg)')"/>rotate(10deg)
+      <input type="radio" name="transform-opt" onclick="changeTransform('skewY(20deg)')"/>skewY(20deg)
+    </div>
+    <hr>
+
+
+    <div id="transform-origin" class="transform-origin">
+      <h3 class="property">Transform Origin</h3>
+      <h3>Usage</h3>
+      <pre>transform-origin: x-axis y-axis z-axis | initial | inherit</pre>
+      <p>The transform-origin property allows you to change the position of transformed elements.</p>
+      <p class="note">Note: This property must be used together with the transform property.</p>
+      <h3>Example</h3>
+      <p>These radio buttons affect the previous div ^^.<br>
+      transform-origin:
+      <input type="radio" name="transform-origin-opt" onclick="changeTransformOrigin('initial')" checked/>initial
+      <input type="radio" name="transform-origin-opt" onclick="changeTransformOrigin('20% 40%')">rotate(45deg) 20% 40%;
+    </div>
+    <hr>
+
+
+    <div id="transform-style" class="transform-style">
+      <h3 class="property">Transform Style</h3>
+      <h3>Usage</h3>
+      <pre>transform-style: flat | preserve-3d | initial | inherit</pre>
+      <p>The transform-style property specifies how nested elements are rendered in 3D space.</p>
+      <p class="note">Note: This property must be used together with the transform property.</p>
+      <h3>Example</h3>
+      transform-style: preserve-3d 
+
+      <div id="div1">
+        <div id="div2">Pink
+          <div id="div3">Purple</div>
+        </div>
+      </div>
+
+    </div>
+    <hr>
+
+
+
+    <div id="transition-div">
+      <h3 class="property">Transition</h3>
+      <h3>Usage</h3>
+      <pre>transition: property duration timing-function delay | initial | inherit</pre>
+      <p>The transition property is a shorthand property for the four transition properties:</p>
+      <p>transition-property, transition-duration, transition-timing-function, and transition-delay.</p>
+      <h3>Example</h3>
+      transition:
+      <div class="transition"></div>
+      
+    </div>
+    <hr>
+
+
+    <div id="transition-delay-div">
+      <h3 class="property">Transition Delay</h3>
+      <h3>Usage</h3>
+      <pre>transition-delay: time | initial | inherit</pre>
+      <p>The transition-delay property specifies when the transition effect will start.</p>
+      <p>The transition-delay value is defined in seconds (s) or milliseconds (ms).</p>
+      <h3>Example</h3>
+      transition-delay:
+      <div id="transition-delay" class="transition-delay"></div>
+    </div>
+    <hr>
+
+
+    <div id="transition-duration-div">
+      <h3 class="property">Transition Duration</h3>
+      <h3>Usage</h3>
+      <pre>transition-duration: time | initial | inherit</pre>
+      <p>The transition-duration property specifies how many seconds (s) or milliseconds (ms) a transition effect takes to complete.</p>
+      <h3>Example</h3>
+      transition-duration:
+      <input type="radio" name="transition-duration-opt" onclick="changeTransitionDuration('500ms')" checked/>500ms
+      <input type="radio" name="transition-duration-opt" onclick="changeTransitionDuration('1s')"/>1s
+      <input type="radio" name="transition-duration-opt" onclick="changeTransitionDuration('2s')"/>2s
+      <input type="radio" name="transition-duration-opt" onclick="changeTransitionDuration('5s')"/>5s
+      
+      <div id="transition-duration" class="transition-duration"></div>
+    </div>
+    <hr>
+
+
+
+    <div id="transition-property-div">
+      <h3 class="property">Transition Property</h3>
+      <h3>Usage</h3>
+      <pre>transition-property: none | all | property | initial | inherit</pre>
+      <p>The transition-property property specifies the name of the CSS property the transition effect is for (the transition effect will start when the specified CSS property changes).</p>
+      <h3>Example</h3>
+      transition-property:
+      <div id="transition-property" class="transition-property"></div>
+    </div>
+    <hr>
+
+
+    <div id="transition-timing-function-div">
+      <h3 class="property">Transition Timing Function</h3>
+      <h3>Usage</h3>
+      <pre>transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int,start|end) | cubic-bezier(n,n,n,n) | initial | inherit</pre>
+      <p>The transition-timing-function property specifies the speed curve of the transition effect.</p>
+      <p>This property allows a transition effect to change speed over its duration.</p>
+      <h3>Example</h3>
+      transition-timing-function:
+      <input type="radio" name="transition-timing-function-opt" onclick="changeTransitionTimingFunction('linear')" checked/>linear
+      <input type="radio" name="transition-timing-function-opt" onclick="changeTransitionTimingFunction('ease')"/>ease
+      <input type="radio" name="transition-timing-function-opt" onclick="changeTransitionTimingFunction('ease-in')"/>ease-in
+      <input type="radio" name="transition-timing-function-opt" onclick="changeTransitionTimingFunction('ease-out')"/>ease-out
+      <input type="radio" name="transition-timing-function-opt" onclick="changeTransitionTimingFunction('ease-in-out')"/>ease-in-out
+
+      <div id="transition-timing-function" class="transition-timing-function"></div>
+    </div>
+    <hr>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
       <h3>Usage</h3>
       <pre>INSERT USAGE HERE</pre>
       <h3>Example</h3>
     </div>
     <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
+
+
+    <div id="[INSERT PROPERTY NAME HERE]" class="[INSERT PROPERTY NAME HERE]">
+      <h3 class="property">Property Name</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <h3>Example</h3>
+    </div>
+    <hr>
+
   </body>
 </html>
