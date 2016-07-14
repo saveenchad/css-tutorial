@@ -5,42 +5,566 @@
     <meta charset="utf-8">
 
     <style>
-      pre {
+      pre, div p {
         text-indent: 25px;
       }
+
+      .note {
+        font-style: italic;
+      }
+
+      .property {
+        text-decoration: underline;
+      }
+
+      .position {
+        position: static;
+        background-color: red;
+        left: 100px;
+        top: 150px;
+      }
+
+      q {
+        quotes: "«" "»" "‹" "›";
+      }
+
+      .resize {
+        border: 2px solid;
+        padding: 20px;
+        width: 400px;
+        resize: none;
+        overflow: auto;
+      }
+
+      .unicode-bidi {
+        direction: rtl;
+        unicode-bidi: bidi-override;
+      }
+
+      .vertical-align {
+        vertical-align: baseline;
+      }
+
+      .width {
+        background-color: pink;
+        width: auto;
+      }
+
+      .height {
+        background-color: pink;
+        height: auto;
+      }
+
+      .text-overflow {
+        white-space: nowrap;
+        width: 12em;
+        overflow: hidden;
+        text-overflow: clip;
+        border: 1px solid #000000;
+      }
+
+      .filter {
+        -webkit-filter: none; /* Chrome, Safari, Opera */
+        filter: none;
+      }
+
+      input[type=text] {
+        width: 100px;
+      }
+
+      input:focus {
+        background-color: pink;
+      }
+
+      input:invalid {
+        border: 2px solid red;
+      }
+
+      a:hover {
+        background-color: pink;
+      }
+
+      input:required {
+        background-color: red;
+        border: 2px solid green;
+      }
+
+      input:valid {
+        background-color: lightgreen;
+        border: 2px solid green;
+      }
+
+      input:-moz-read-only { /* For Firefox */
+        background-color: lightgrey;
+      }
+
+      input:read-only {
+        background-color: lightgrey;
+      }
+
+      input:-moz-read-write { /* For Firefox */
+        background-color: pink;
+      }
+
+      input:read-write {
+        background-color: pink;
+      }
+
+      .visibility {
+        visibility: visible;
+      }
+
+      .color {
+        color: black;
+      }
+
+      .text-decoration {
+        text-decoration: none;
+      }
+
+      .text-justify-align {
+        border: 1px solid black;
+        width: 500px;
+        padding: 0 10px;
+      }
+
+
+
     </style>
+    <script>
+
+      function changePosition(newVal) {
+        var el = document.querySelectorAll("#position")[0];
+        el.style.position = newVal;
+      }
+
+      function changeResize(newVal) {
+        var el = document.querySelectorAll("#resize")[0];
+        el.style.resize = newVal;
+      }
+
+      function changeVerticalAlign(newVal) {
+        var el = document.querySelectorAll("#vertical-align")[0];
+        el.style.verticalAlign = newVal;
+      }
+
+      function changeWidth(newVal) {
+        var el = document.querySelectorAll("#width")[0];
+        el.style.width = newVal;
+      }
+
+      function changeHeight(newVal) {
+        var el = document.querySelectorAll("#height")[0];
+        el.style.height = newVal;
+      }
+
+      function changeTextOverflow(newVal) {
+        var el = document.querySelectorAll("#text-overflow")[0];
+        el.style.textOverflow = newVal;
+      }
+
+      function changeFilter(newVal) {
+        var el = document.querySelectorAll("#filter")[0];
+        el.style.filter = newVal;
+        el.style.webkitFilter = newVal;
+      }
+
+      function changeVisibility(newVal) {
+        var el = document.querySelectorAll("#visibility")[0];
+        el.style.visibility = newVal;
+      }
+
+      function changeColor(newVal) {
+        var el = document.querySelectorAll("#color")[0];
+        el.style.color = newVal;
+      }
+
+      function changeTextDecoration(newVal) {
+        var el = document.querySelectorAll("#text-decoration")[0];
+        el.style.textDecoration = newVal;
+      }
+
+      function changeLetterSpacing(newVal) {
+        var el = document.querySelectorAll("#letter-spacing-ex p")[0];
+        if(newVal === undefined) {
+          newVal = document.getElementById("letter-spacing-val").value;
+          el.style.letterSpacing = newVal + "px";
+          return;
+        }
+        el.style.letterSpacing = newVal;
+      }
+
+    </script>
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#position-div">position</a></li>
+      <li><a href="#quotes-div">quotes</a></li>
+      <li><a href="#resize-div">resize</a></li>
+      <li><a href="#unicode-bidi-div">unicode-bidi</a></li>
+      <li><a href="#vertical-align-div">vertical-align</a></li>
+      <li><a href="#width">width</a></li>
+      <li><a href="#height">height</a></li>
+      <li><a href="#text-overflow-div">text-overflow</a></li>
+      <li><a href="#filter-div">filter</a></li>
+      <li><a href="#focus">focus</a></li>
+      <li><a href="#invalid">invalid</a></li>
+      <li><a href="#hover">hover</a></li>
+      <li><a href="#required">required</a></li>
+      <li><a href="#valid">valid</a></li>
+      <li><a href="#read-only">read-only</a></li>
+      <li><a href="#read-write">read-write</a></li>
+      <li><a href="#visibility">visibility</a></li>
+      <li><a href="#color">color</a></li>
+      <li><a href="#text-decoration">text-decoration</a></li>
+      <li><a href="#">...</a></li>
     </ol>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="position-div">
+      <h3 class="property">Position</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>position: static | absolute | fixed | relative | initial | inherit</pre>
+      <p>The position property specifies the type of positioning method used for an element (static, relative, absolute or fixed).</p>
       <h3>Example</h3>
+      position:
+      <input type="radio" name="position-opt" onclick="changePosition('absolute')"/>absolute
+      <input type="radio" name="position-opt" onclick="changePosition('static')" checked/>static
+      <input type="radio" name="position-opt" onclick="changePosition('fixed')"/>fixed
+      <input type="radio" name="position-opt" onclick="changePosition('relative')"/>relative
+      <input type="radio" name="position-opt" onclick="changePosition('initial')"/>initial
+
+      <h2 id="position" class="position">I am a heading</h2>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+
+
+    <div id="quotes-div">
+      <h3 class="property">Quotes</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>quotes: none | string | initial | inherit</pre>
+      <p>The quotes property sets the type of quotation marks for quotations.</p>
       <h3>Example</h3>
+      quotes:
+      <p><q> I am be a quote. </q></p>
+      <p><q> I am a <q>double</q> quote</q>.</p>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="resize-div">
+      <h3 class="property">Resize</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>resize: none | both | horizontal | vertical | initial | inherit</pre>
+      <p>The resize property specifies whether or not an element is resizable by the user.</p>
       <h3>Example</h3>
+      resize:
+      <input type="radio" name="resize-opt" onclick="changeResize('none')" checked/>none
+      <input type="radio" name="resize-opt" onclick="changeResize('both')"/>both
+      <input type="radio" name="resize-opt" onclick="changeResize('horizontal')"/>horizontal
+      <input type="radio" name="resize-opt" onclick="changeResize('vertical')"/>vertical
+      <input type="radio" name="resize-opt" onclick="changeResize('initial')"/>initial
+
+      <p id="resize" class="resize">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
     </div>
     <hr>
+
+
+    <div id="unicode-bidi-div">
+      <h3 class="property">Unicode Bidi</h3>
+      <h3>Usage</h3>
+      <pre>unicode-bidi: normal | embed | bidi-override | intitial | inherit</pre>
+      <p>The unicode-bidi property is used together with the direction property to set or return whether the text should be overridden to support multiple languages in the same document.</p>
+      <h3>Example</h3>
+      unicode-bidi:
+      <div>I am left to right.</div>
+      <div id="unicode-bidi" class="unicode-bidi">I am right to left.</div>
+    </div>
+    <hr>
+
+
+    <div id="vertical-align-div">
+      <h3 class="property">Vertical Align</h3>
+      <h3>Usage</h3>
+      <pre>vertical-align: baseline | length | sub | super | top | text-top | middle | bottom | text-bottom | initial | inherit</pre>
+      <p>The vertical-align property sets the vertical alignment of an element.</p>
+      <h3>Example</h3>
+      vertical-align:
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('baseline')" checked/>baseline
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('10px')"/>10px
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('sub')"/>sub
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('super')"/>super
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('top')"/>top
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('text-top')"/>text-top
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('middle')"/>middle
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('bottom')"/>bottom
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('text-bottom')"/>text-bottom
+      <input type="radio" name="vertical-align-opt" onclick="changeVerticalAlign('initial')"/>initial
+
+      <p>Hello, <img id ="vertical-align" class="vertical-align" src="smiley.png" alt="smiley" width="50" height="50" /> I am a smiley face.</p>
+    </div>
+    <hr>
+
+
+    <div id="width" class="width">
+      <h3 class="property">Width</h3>
+      <h3>Usage</h3>
+      <pre>width: auto | value | initial | inherit</pre>
+      <p>The width property sets the width of an element.</p>
+      <p class="note">Note: The width property does not include padding, borders, or margins; it sets the width of the area inside the padding, border, and margin of the element!</p>
+      <p class="note">Note: The min-width and max-width properties override width.</p>
+      <h3>Example</h3>
+      width:
+      <input type="radio" name="width-opt" onclick="changeWidth('auto')" checked/>auto
+      <input type="radio" name="width-opt" onclick="changeWidth('500px')"/>500px
+    </div>
+    <hr>
+
+
+    <div id="height" class="height">
+      <h3 class="property">Height</h3>
+      <h3>Usage</h3>
+      <pre>height: auto | length | initial | inherit</pre>
+      <p>The height property sets the height of an element.</p>
+      <p class="note">Note: The height property does not include padding, borders, or margins; it sets the height of the area inside the padding, border, and margin of the element!</p>
+      <p class="note">Note: The min-height and max-height properties override height.</p>
+      <h3>Example</h3>
+      height:
+      <input type="radio" name="height-opt" onclick="changeHeight('auto')" checked/>auto
+      <input type="radio" name="height-opt" onclick="changeHeight('500px')"/>500px
+    </div>
+    <hr>
+
+
+    <div id="text-overflow-div">
+      <h3 class="property">Text Overflow</h3>
+      <h3>Usage</h3>
+      <pre>text-overflow: clip | ellipsis | string | initial | inherit</pre>
+      <p>The text-overflow property specifies how overflowed content that is not displayed should be signaled to the user.</p>
+      <h3>Example</h3>
+      text-overflow:
+      <input type="radio" name="text-overflow-opt" onclick="changeTextOverflow('clip')" checked/>clip
+      <input type="radio" name="text-overflow-opt" onclick="changeTextOverflow('ellipsis')"/>ellipsis
+      <input type="radio" name="text-overflow-opt" onclick="changeTextOverflow('initial')"/>intitial
+      <p class="text-overflow" id="text-overflow">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+
+    </div>
+    <hr>
+
+
+
+    <div id="filter-div">
+      <h3 class="property">Filter</h3>
+      <h3>Usage</h3>
+      <pre>filter: none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url()</pre>
+      <p>The filter property defines visual effects (like blur and saturation) to an element (often &lt;img&gt;).</p>
+      <h3>Example</h3>
+      filter:
+      <input type="radio" name="filter-opt" onclick="changeFilter('none')" checked/>none
+      <input type="radio" name="filter-opt" onclick="changeFilter('blur(10px)')"/>blur(10px)
+      <input type="radio" name="filter-opt" onclick="changeFilter('brightness(50%)')" />brightness(50%)
+      <input type="radio" name="filter-opt" onclick="changeFilter('contrast(80%)')"/>contrast(80%)
+      <input type="radio" name="filter-opt" onclick="changeFilter('drop-shadow(8px 8px 10px red)')" />drop-shadow(8px 8px 10px red)
+      <input type="radio" name="filter-opt" onclick="changeFilter('grayscale(100%)')"/>grayscale(100%)
+      <input type="radio" name="filter-opt" onclick="changeFilter('hue-rotate(120deg)')" />hue-rotate(120deg)
+      <input type="radio" name="filter-opt" onclick="changeFilter('invert(60%)')"/>invert(60%)
+      <input type="radio" name="filter-opt" onclick="changeFilter('opacity(90%)')" />opacity(90%)
+      <input type="radio" name="filter-opt" onclick="changeFilter('saturate(75%)')"/>saturate(75%)
+      <input type="radio" name="filter-opt" onclick="changeFilter('sepia(75%)')" />sepia(75%)
+
+      <img class="filter" id="filter" src="pencils.jpg" alt="Pencils" width="500" height="500">
+
+    </div>
+    <hr>
+
+
+
+    <div id="focus">
+      <h3 class="property">Focus</h3>
+      <h3>Usage</h3>
+      <pre>:focus {
+      css declarations;
+    }
+      </pre>
+      <p>The :focus selector is used to select the element that has focus.</p>
+      <h3>Example</h3>
+      focus:
+      Search: <input type="text" name="search">
+    </div>
+    <hr>
+
+
+
+    <div id="invalid">
+      <h3 class="property">Invalid</h3>
+      <h3>Usage</h3>
+      <pre>:invalid {
+      css declarations;
+    }
+      </pre>
+      <p>The :invalid selector selects form elements with a value that does not validate according to the element's settings.</p>
+      <p class="note">Note: The :invalid selector only works for form elements with limitations, such as input elements with min and max attributes, email fields without a legal email, or number fields without a numeric value, etc.</p>
+      <h3>Example</h3>
+      invalid:
+      <input type="email" value="supportEmail">
+    </div>
+    <hr>
+
+
+    <div id="hover">
+      <h3 class="property">Hover</h3>
+      <h3>Usage</h3>
+      <pre>:hover {
+      css declarations;
+    }
+      </pre>
+      <p>The :hover selector is used to select elements when you mouse over them.</p>
+      <h3>Example</h3>
+      hover:
+      <a href="http://www.ucsd.edu">UCSD</a>
+      <a href="http://www.google.com">Google</a>
+    </div>
+    <hr>
+
+
+
+    <div id="required">
+      <h3 class="property">Required</h3>
+      <h3>Usage</h3>
+      <pre>INSERT USAGE HERE</pre>
+      <p>The :required selector selects form elements which are required.</p>
+      <p>Form elements with a required attribute are defined as required.</p>
+      <p class="note">Note: The :required selector only applies to the form elements: input, select and textarea.</p>
+      <h3>Example</h3>
+      required:
+      <p>This field is required:<br><input required></p>
+    </div>
+    <hr>
+
+
+    <div id="valid">
+      <h3 class="property">Valid</h3>
+      <h3>Usage</h3>
+      <pre>:valid {
+      css declarations;
+    }
+      </pre>
+      <p>The :valid selector selects form elements with a value that validates according to the element's settings.</p>
+      <p class="note">Note: The :valid selector only works for form elements with limitations, such as input elements with min and max attributes, email fields with a legal email, or number fields with a numeric value, etc.</p>
+      <h3>Example</h3>
+      valid:
+      <input type="email" value="safarsi@ucsd.edu">
+
+    </div>
+    <hr>
+
+
+    <div id="read-only">
+      <h3 class="property">Read Only</h3>
+      <h3>Usage</h3>
+      <pre>:read-only {
+      css declarations;
+    }
+      </pre>
+      <p>The :read-only selector selects elements which are "readonly".</p>
+      <p>Form elements with a "readonly" attribute are defined as "readonly".</p>
+      <p class="note">Note: Currently, in most browsers, the :read-only selector only applies to input and textarea elements, but it should apply to all elements which are "readonly".</p>
+      <h3>Example</h3>
+      read-only:
+      <p>This is a readonly input element:<br><input readonly value="You cannot change this."></p>
+    </div>
+    <hr>
+
+
+    <div id="read-write">
+      <h3 class="property">Read Write</h3>
+      <h3>Usage</h3>
+      <pre>:read-write {
+      css declarations;
+    }
+      </pre>
+      <p>The :read-write selector selects form elements which are "readable" and "writeable".</p>
+      <p>Form elements with no "readonly" attribute, and no "disabled" attribute are defined as "read-" and "write-able".</p>
+      <p class="note">Note: Currently, in most browsers, the :read-write selector only applies to input and textarea elements, where the "readonly" attribute is not present, regardless if the element is disabled or not.</p>
+      <h3>Example</h3>
+      read-write:
+      <p>This is a read-write input element:<br><input value="hello"></p>
+    </div>
+    <hr>
+
+
+    <div id="visibility">
+      <h3 class="property">Visibility</h3>
+      <h3>Usage</h3>
+      <pre>visibility: visible | hidden | collapse | initial | inherit</pre>
+      <p>The visibility property specifies whether or not an element is visible.</p>
+      <h3  class="visibility">Example</h3>
+      <input class="visibility" type="radio" name="visibility-opt" onclick="changeVisibility('visible')" checked/>visible
+      <input class="visibility" type="radio" name="visibility-opt" onclick="changeVisibility('hidden')"/>hidden
+      <input class="visibility" type="radio" name="visibility-opt" onclick="changeVisibility('collapse ')"/>collapse 
+    </div>
+    <hr>
+
+
+    <div id="color" class="color">
+      <h3 class="property">Color</h3>
+      <h3>Usage</h3>
+      <pre>color: color | initial | inherit</pre>
+      <p>The color property specifies the color of text.</P>
+      <h3>Example</h3>
+      color:
+      <input type="radio" name="color-opt" onclick="changeColor('black')" checked/>black
+      <input type="radio" name="color-opt" onclick="changeColor('pink')"/>pink
+      <input type="radio" name="color-opt" onclick="changeColor('rgb(100,100,100)')"/>rgb(100,100,100)
+      <input type="radio" name="color-opt" onclick="changeColor('#ff0000')"/>##ff0000
+      <input type="radio" name="color-opt" onclick="changeColor('initial')"/>initial
+      <input type="radio" name="color-opt" onclick="changeColor('inherit')"/>inherit
+    </div>
+    <hr>
+
+
+    <div id="text-decoration" class="text-decoration">
+      <h3 class="property">Text Decoration</h3>
+      <h3>Usage</h3>
+      <pre>text-decoration: none | underline | overline | line-through | initial | inherit</pre>
+      <p>The text-decoration property specifies the decoration added to text.</p>
+      <h3>Example</h3>
+      text-decoration:
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('none')" checked//>none
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('underline')">underline
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('overline')"/>overline
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('line-through')"/>line-through
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('initial')"/>initial
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('inherit')"/>inherit
+    </div>
+    <hr>
+
+
+    <div id="letter-spacing">
+      <h3 class="property">Letter Spacing</h3>
+      <h3>Usage:</h3>
+      <pre>letter-spacing: normal | length | initial | inherit;</pre>
+      <h3>Example:</h3>
+      <input type="radio" name="letter-spacing-opt" onclick="changeLetterSpacing('normal')"/>normal
+      <input type="radio" name="letter-spacing-opt" onclick="changeLetterSpacing('initial')" checked/>initial<br>
+      length: <input type="number" id="letter-spacing-val" onchange="changeLetterSpacing(undefined)" value="0"/>px
+      <div id="letter-spacing-ex" class="text-justify-align">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus sodales volutpat.
+          Donec feugiat eros sed lectus faucibus, quis ultrices nisl dictum.
+          Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam nec iaculis sapien.
+          Proin eu iaculis augue. Donec porta ex at posuere vehicula. Phasellus vitae porta urna, eu rutrum nibh.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+
   </body>
 </html>
