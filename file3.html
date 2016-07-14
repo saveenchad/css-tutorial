@@ -86,11 +86,6 @@
         el.style.overflowX = newVal;
       }
 
-      //9
-      function changeFontSizeAdjust() {
-
-      }
-
       //10
       function changeFontFamily(newVal) {
         var el = document.querySelectorAll("#font-family .font-ex")[0];
@@ -107,25 +102,56 @@
         el.style.fontSize = val + "px";
       }
 
-      //12
-      function changeFontStretch() {
-
-      }
-
       //13
       function changeFontStyle(newVal) {
         var el = document.querySelectorAll("#font-style .font-ex")[0];
         el.style.fontStyle = newVal;
       }
 
-      //14
-      function changeFont() {
-
+      //15
+      function changeFontWeight(newVal) {
+        var el = document.querySelectorAll("#font-weight .font-ex")[0];
+        // console.log(el);
+        if(newVal === 'custom') {
+          var sel = document.getElementById("font-weight-select");
+          // console.log(sel);
+          var val = sel.options[sel.selectedIndex].value;
+          // console.log(val);
+          el.style.fontWeight = val;
+          return;
+        }
+        el.style.fontWeight = newVal;
       }
 
-      //15
-      function changeFontWeight() {
-        
+      function changeLineHeight() {
+        var el = document.querySelectorAll("#line-height .line-height-ex")[0];
+        var val = document.getElementById("line-height-val").value;
+        el.style.lineHeight = val + "px";
+      }
+
+      function changeFloat(newVal) {
+        var el = document.getElementById("float-ex");
+        el.style.float = newVal;
+      }
+
+      function changeClear(newVal) {
+        var els = document.querySelectorAll("#float .clear-ex");
+        for(var i = 0; i < els.length; i++) {
+          els[i].style.clear = newVal;
+        }
+      }
+
+      function changeOpacity() {
+        var el = document.querySelectorAll("#opacity .opacity-ex")[0];
+        var val = document.getElementById("opacity-val").value;
+        el.style.opacity = val;
+      }
+
+      function changeDisplay(newVal) {
+        var els = document.querySelectorAll("#display p");
+        for(var i = 0; i < els.length; i++) {
+          els[i].style.display = newVal;
+        }
       }
     </script>
 
@@ -151,11 +177,11 @@
       <li><a href="#font-style">font-style</a></li>
       <li><a href="#font">font</a></li>
       <li><a href="#font-weight">font-weight</a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
+      <li><a href="#line-height">line-height</a></li>
+      <li><a href="#float">float</a></li>
+      <li><a href="#clear">clear</a></li>
+      <li><a href="#opacity">opacity</a></li>
+      <li><a href="#display">display</a></li>
     </ol>
     <hr>
 
@@ -273,6 +299,17 @@
     </div>
     <hr>
 
+    <style>
+      .times {
+        font-family: 'times new roman';
+        font-size-adjust: 0.58;
+      }
+
+      .verdana {
+        font-family: 'verdana';
+        font-size-adjust: 0.58;
+      }
+    </style>
     <div id="font-size-adjust">
       <h3>Font Size Adjust</h3>
       <h3>Usage</h3>
@@ -280,9 +317,12 @@
       <p>This property allows the programmer to set the font size in case a secondary font is needed from a font-family.</p>
       <p class="note">This property is only supported in Firefox!</p>
       <h3>Example</h3>
-      font-size-adjust:
-      <input type="number" id="font-size-adjust-val" onclick="changeFontSizeAdjust()"/>px<br>
-      <div class="font-ex">this is a font-size-adjust test!</div>
+      <pre>.times { font-family: 'Times New Roman'; font-size-adjust: 0.58; }</pre>
+      <pre>.verdana { font-family: 'Verdana'; font-size-adjust: 0.58; }</pre>
+      <pre>&lt;p class="times"&gt;this is a font-size-adjust test!&lt;/p&gt;</pre>
+      <pre>&lt;p class="verdana"&gt;I have the same font size as the paragraph above even though I'm a different font!&lt;/p&gt;</pre>
+      <p class="font-ex times">this is a font-size-adjust test!</p>
+      <p class="font-ex verdana">I have the same font size as the paragraph above even though I'm a different font!</p>
     </div>
     <hr>
 
@@ -340,6 +380,8 @@
       <h3>Usage</h3>
       <pre>font: font-style font-variant font-weight font-size/line-height font-family | caption | icon | menu | message-box | small-caption | status-bar | initial | inherit;</pre>
       <h3>Example</h3>
+      <pre>font: italic bold 20px/30px Georgia, serif;</pre>
+      <p style="font:italic bold 20px/30px Georgia, serif;">This paragraph has a different font!</p>
     </div>
     <hr>
 
@@ -347,6 +389,7 @@
       <h3>Font Weight</h3>
       <h3>Usage</h3>
       <pre>font-weight: normal | bold | bolder | lighter | number | initial | inherit;</pre>
+      <p>This property modifies the thickness of a text element</p>
       <h3>Example</h3>
       font-weight:
       <input type="radio" name="font-weight-opt" onclick="changeFontWeight('normal')"/>normal
@@ -355,7 +398,7 @@
       <input type="radio" name="font-weight-opt" onclick="changeFontWeight('lighter')"/>lighter
       <input type="radio" name="font-weight-opt" onclick="changeFontWeight('initial')" checked/>initial<br>
 
-      <select id="font-weight-select" onchange="changeFontWeight()">
+      <select id="font-weight-select" onchange="changeFontWeight('custom')">
         <option value="100">100</option>
         <option value="200">200</option>
         <option value="300">300</option>
@@ -371,35 +414,116 @@
     </div>
     <hr>
 
-    <div id="">
-      <h3></h3>
+    <div id="line-height">
+      <h3>Opacity</h3>
       <h3>Usage</h3>
-      <pre></pre>
+      <pre>Line Height: normal | number | length | initial | inherit;</pre>
+      <p>This property specifies this size of each line (top of one line to top of the next line) in a paragraph</p>
       <h3>Example</h3>
+      line-height:
+      <input type="number" id="line-height-val" onchange="changeLineHeight()" value="16" min="0"/>px<br>
+      <p class="line-height-ex">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+        Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
     </div>
     <hr>
 
-    <div id="">
-      <h3></h3>
+    <div id="float">
+      <h3>Float</h3>
       <h3>Usage</h3>
-      <pre></pre>
+      <pre>float: none | left | right | initial | inherit;</pre>
+      <p>This property specifies whether an element should float and which direction it should float to</p>
+      <p class="note">Note: Elements with position absolute will ignore the float property</p>
       <h3>Example</h3>
+      float:
+      <input type="radio" name="float-opt" onclick="changeFloat('none')"/>none
+      <input type="radio" name="float-opt" onclick="changeFloat('left')"/>left
+      <input type="radio" name="float-opt" onclick="changeFloat('right')"/>right
+      <input type="radio" name="float-opt" onclick="changeFloat('initial')" checked/>initial<br>
+      <img src="casper_transparent.gif" height="300px" width="300px" id="float-ex"/>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
+      <p class="clear-ex">This is some buffer text</p>
     </div>
     <hr>
 
-    <div id="">
-      <h3></h3>
+    <div id="clear">
+      <h3>Clear</h3>
       <h3>Usage</h3>
-      <pre></pre>
+      <pre>clear: none | left | right | both | initial | inherit;</pre>
+      <p>This property specifies which side of the element other floating elements are NOT allowed to float</p>
       <h3>Example</h3>
+      <p class="note">This test modifies the clear property of the paragraphs in the float example above</p>
+      clear:
+      <input type="radio" name="clear-opt" onclick="changeClear('none')"/>none
+      <input type="radio" name="clear-opt" onclick="changeClear('left')"/>left
+      <input type="radio" name="clear-opt" onclick="changeClear('right')"/>right
+      <input type="radio" name="clear-opt" onclick="changeClear('both')"/>both
+      <input type="radio" name="clear-opt" onclick="changeClear('initial')" checked/>initial<br>
     </div>
     <hr>
 
-    <div id="">
-      <h3></h3>
+    <style>
+      #opacity .opacity-ex {
+        height: 100px;
+        width: 100px;
+        border: 2px solid black;
+        background: blue;
+      }
+    </style>
+    <div id="opacity">
+      <h3>Opacity</h3>
       <h3>Usage</h3>
-      <pre></pre>
+      <pre>opacity: number | initial | inherit;</pre>
+      <p>This property modifies the how translucent the element is</p>
       <h3>Example</h3>
+      opacity: <input type="number" id="opacity-val" value="1" min="0" step="0.01" onchange="changeOpacity()"/>
+      <div class="opacity-ex"></div>
+    </div>
+    <hr>
+
+    <div id="display">
+      <h3>Display</h3>
+      <h3>Usage</h3>
+      <pre>display: inline | block | flex | inline-block | inline-flex | inline-table | list-item | table | table-caption | table-column-group | table-header-group | <br>table-footer-group | table-row-group | table-cell | table-colum | table-row | none | initial | inherit;</pre>
+      <p>This property modifies how an element is displayed</p>
+      <h3>Example</h3>
+      display:
+      <input type="radio" name="display-opt" onclick="changeDisplay('inline')"/>inline
+      <input type="radio" name="display-opt" onclick="changeDisplay('block')"/>block
+      <input type="radio" name="display-opt" onclick="changeDisplay('flex')"/>flex
+      <input type="radio" name="display-opt" onclick="changeDisplay('inline-block')"/>inline-block
+      <input type="radio" name="display-opt" onclick="changeDisplay('inline-flex')"/>inline-flex
+      <input type="radio" name="display-opt" onclick="changeDisplay('inline-table')"/>inline-table
+      <input type="radio" name="display-opt" onclick="changeDisplay('list-item')"/>list-item
+      <input type="radio" name="display-opt" onclick="changeDisplay('table')"/>table
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-caption')"/>table-caption
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-column-group')"/>table-column-group
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-header-group')"/>table-header-group
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-footer-group')"/>table-footer-group
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-row-group')"/>table-row-group
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-cell')"/>table-cell
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-column')"/>table-column
+      <input type="radio" name="display-opt" onclick="changeDisplay('table-row')"/>table-row
+      <input type="radio" name="display-opt" onclick="changeDisplay('none')"/>none
+      <input type="radio" name="display-opt" onclick="changeDisplay('initial')" checked/>initial<br>
+      <p>This is a test</p>
+      <p>This is a test</p>
+      <p>This is a test</p>
+      <p>This is a test</p>
     </div>
     <hr>
   </body>

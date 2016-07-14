@@ -5,41 +5,549 @@
     <meta charset="utf-8">
 
     <style>
-      pre {
+      /* "global" css for this file */
+      pre, div p {
         text-indent: 25px;
       }
+
+      .note {
+        font-style: italic;
+      }
+
+      .table-ex,
+      .table-ex td,
+      .table-ex th {
+        border: 1px solid black;
+      }
     </style>
+
+    <script>
+      function changeTextDecoration(newVal) {
+        var el = document.querySelectorAll("#text-decoration .text-decoration-ex")[0];
+        el.style.textDecoration = newVal;
+      }
+
+      function changeHeight() {
+        var el = document.querySelectorAll("#height .height-ex")[0];
+        var val = document.getElementById("height-val").value;
+        el.style.height = val + "px";
+      }
+
+      function changeMinHeight() {
+        var el = document.querySelectorAll("#min-height .height-ex")[0];
+        var val = document.getElementById("min-height-val").value;
+        el.style.height = val + "px";
+      }
+
+      function changeMinWidth() {
+        var el = document.querySelectorAll("#min-width .width-ex")[0];
+        var val = document.getElementById("min-width-val").value;
+        el.style.width = val + "px";
+      }
+
+      function changeWidth() {
+        var el = document.querySelectorAll("#width .width-ex")[0];
+        var val = document.getElementById("width-val").value;
+        el.style.width = val + "px";
+      }
+
+      function changeBorderCollapse(newVal) {
+        var el = document.querySelectorAll("#border-collapse .border-collapse-ex")[0];
+        el.style.borderCollapse = newVal;
+      }
+
+      function changeBorderSpacing() {
+        var el = document.querySelectorAll("#border-spacing .border-spacing-ex")[0];
+        var val = document.getElementById("border-spacing-val").value;
+        el.style.borderSpacing = val + "px";
+      }
+
+      function changeCaptionSide(newVal) {
+        var el = document.querySelectorAll("#caption-side .caption-side-ex caption")[0];
+        el.style.captionSide = newVal;
+      }
+
+      function changeEmptyCells(newVal) {
+        var el = document.querySelectorAll("#empty-cells .empty-cells-ex")[0];
+        el.style.emptyCells = newVal;
+      }
+
+      function changeDirection(newVal) {
+        var el = document.querySelectorAll("#direction .direction-ex")[0];
+        el.style.direction = newVal;
+      }
+    </script>
   </head>
   <body>
     <h2>Table of Contents</h2>
 
     <ol>
-      <li><a href="#[INSERT PROPERTY NAME HERE]">[INSERT PROPERTY NAME HERE]</a></li>
-      <li><a href="">...</a></li>
+      <li><a href="#style">style</a></li>
+      <li><a href="#text-decoration">text-decoration</a></li>
+      <li><a href="#max-height">max-height</a></li>
+      <li><a href="#height">height</a></li>
+      <li><a href="#max-width">max-width</a></li>
+      <li><a href="#min-height">min-height</a></li>
+      <li><a href="#min-width">min-width</a></li>
+      <li><a href="#width">width</a></li>
+      <li><a href="#border-collapse">border-collapse</a></li>
+      <li><a href="#border-spacing">border-spacing</a></li>
+      <li><a href="#caption-side">caption-side</a></li>
+      <li><a href="#clip">clip</a></li>
+      <li><a href="#empty-cells">empty-cells</a></li>
+      <li><a href="#direction">direction</a></li>
+      <li><a href="#table-layout">table-layout</a></li>
+      <li><a href="#focus">:focus</a></li>
+      <li><a href="#hover">:hover</a></li>
+      <li><a href="#first-letter">::first-letter</a></li>
+      <li><a href="#nth-child">:nth-child</a></li>
+      <li><a href="#last-child">:last-child</a></li>
     </ol>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="style">
+      <h3>Style</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>style: CSS</pre>
+      <p>Sets inline CSS that overrides all other CSS properties of the same name</p>
       <h3>Example</h3>
+      <pre>&lt;p style="font-size: 30px;color: green;text-decoration: underline;"&gt;This is a test&lt;/p&gt;</pre>
+      <p style="font-size: 30px;color: green;text-decoration: underline;">This is a test</p>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <div id="text-decoration">
+      <h3>Text Decoration</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>text-decoration: none | underline | overline | line-through | initial | inherit;</pre>
+      <p>This property specifies how a text element is decorated via a line</p>
       <h3>Example</h3>
+      text-decoration:
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('none')"/>none
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('underline')"/>underline
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('overline')"/>overline
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('line-through')"/>line-through
+      <input type="radio" name="text-decoration-opt" onclick="changeTextDecoration('initial')" checked/>initial
+      <p class="text-decoration-ex">This is a text-decoration example</p>
     </div>
     <hr>
 
-    <div id="[INSERT PROPERTY NAME HERE]">
-      <h3>Property Name</h3>
+    <style>
+      #max-height .max-height-ex {
+        height: 500px;
+        max-height: 100px;
+        width: 100px;
+        border: 1px solid black;
+      }
+    </style>
+    <div id="max-height">
+      <h3>Max Height</h3>
       <h3>Usage</h3>
-      <pre>INSERT USAGE HERE</pre>
+      <pre>max-height: none | length | initial | inherit;</pre>
+      <p>A property that sets an upper limit to the height propertyo of an element</p>
       <h3>Example</h3>
+      <p>This div has a height of 500px. But it's max-height is only 100px!</p>
+      <div class="max-height-ex"></div>
+    </div>
+    <hr>
+
+    <div id="height">
+      <h3>Height</h3>
+      <h3>Usage</h3>
+      <pre>height: none | length | initial | inherit;</pre>
+      <p>A property that sets the height of the element</p>
+      <h3>Example</h3>
+      height: <input type="number" id="height-val" value="100" min="0" onchange="changeHeight()"/>px
+      <div class="height-ex" style="width: 100px; height: 100px;border: 1px solid black"></div>
+    </div>
+    <hr>
+
+    <style>
+      #max-width .max-width-ex {
+        width: 500px;
+        max-width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+    </style>
+    <div id="max-width">
+      <h3>Max Width</h3>
+      <h3>Usage</h3>
+      <pre>max-width: none | length | initial | inherit;</pre>
+      <p>A property that sets an upper limit to the width property of an element.</p>
+      <h3>Example</h3>
+      <p>This div has a width of 500px. But it's max-width is only 100px!</p>
+      <div class="max-width-ex"></div>
+    </div>
+    <hr>
+
+    <div id="min-height">
+      <h3>Min Height</h3>
+      <h3>Usage</h3>
+      <pre>min-height: none | length | initial | inherit;</pre>
+      <p>A property that sets the lower limit to the height property of an element.</p>
+      <h3>Example</h3>
+      <p>This div has a min-height of 75px. Try to change the height to be below 75!</p>
+      height: <input type="number" id="min-height-val" value="100" min="0" onchange="changeMinHeight()"/>px
+      <div class="height-ex" style="min-height: 75px; height: 100px; width: 100px; border: 1px solid black"></div>
+    </div>
+    <hr>
+
+    <div id="min-width">
+      <h3>Min Width</h3>
+      <h3>Usage</h3>
+      <pre>min-width: none | length | initial | inherit;</pre>
+      <p>A property that sets the lower limit to the width property of an element.</p>
+      <h3>Example</h3>
+      <p>This div has a min-width of 75px. Try to change the width to be below 75!</p>
+      width: <input type="number" id="min-width-val" value="100" min="0" onchange="changeMinWidth()"/>px
+      <div class="width-ex" style="min-width: 75px; height: 100px; width: 100px; border: 1px solid black"></div>
+    </div>
+    <hr>
+
+    <div id="width">
+      <h3>Width</h3>
+      <h3>Usage</h3>
+      <pre>width: none | length | initial | inherit;</pre>
+      <p>A property that sets the width of the element</p>
+      <h3>Example</h3>
+      width: <input type="number" id="width-val" value="100" min="0" onchange="changeWidth()"/>px
+      <div class="width-ex" style="width: 100px; height: 100px;border: 1px solid black"></div>
+    </div>
+    <hr>
+
+    <div id="border-collapse">
+      <h3>Norder Collapse</h3>
+      <h3>Usage</h3>
+      <pre>border-collapse: separate | collapse | initial | inherit;</pre>
+      <p>this property specifies whether or not multiple borders collapse into a single border</p>
+      <h3>Example</h3>
+      border-collapse:
+      <input type="radio" name="border-collapse-opt" onclick="changeBorderCollapse('separate')"/>separate
+      <input type="radio" name="border-collapse-opt" onclick="changeBorderCollapse('collapse')"/>collapse
+      <input type="radio" name="border-collapse-opt" onclick="changeBorderCollapse('initial')" checked/>initial
+      <table class="border-collapse-ex table-ex">
+        <tr>
+          <td>Row 1, Col 1</td>
+          <td>Row 1, Col 2</td>
+        </tr>
+        <tr>
+          <td>Row 2, Col 1</td>
+          <td>Row 2, Col 2</td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+
+    <style>
+      #border-spacing table,
+      #border-spacing td,
+      #border-spacing th {
+        border-spacing: 0px;
+      }
+    </style>
+    <div id="border-spacing">
+      <h3>Border Spacing</h3>
+      <h3>Usage</h3>
+      <pre>border-spacing: length | initial | inherit;</pre>
+      <p>The spacing between borders for elements with multiple borders</p>
+      <p class="note">Note: if [x] is given for length, then spacing is set as [x] all the way around.</p>
+      <p class="note">Note: if [x y] is given for length, [x] is the horizontal spacing and [y] is the vertical spacing.</p>
+      <h3>Example</h3>
+      border-spacing: <input type="number" id="border-spacing-val" value="0" min="0" onchange="changeBorderSpacing()"/>px</br>
+      <table class="border-spacing-ex table-ex">
+        <tr>
+          <td>Row 1, Col 1</td>
+          <td>Row 1, Col 2</td>
+        </tr>
+        <tr>
+          <td>Row 2, Col 1</td>
+          <td>Row 2, Col 2</td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+
+    <div id="caption-side">
+      <h3>Caption Side</h3>
+      <h3>Usage</h3>
+      <pre>caption-side: top | bottom | initial | inherit;</pre>
+      <p>This property specifies where the table caption will be.</p>
+      <h3>Example</h3>
+      caption-side:
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('top')"/>top
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('bottom')"/>bottom
+      <input type="radio" name="caption-side-opt" onclick="changeCaptionSide('initial')" checked/>initial
+      <table class="caption-side-ex table-ex">
+        <caption>This is a table caption</caption>
+        <tr>
+          <td>Row 1, Col 1</td>
+          <td>Row 1, Col 2</td>
+        </tr>
+        <tr>
+          <td>Row 2, Col 1</td>
+          <td>Row 2, Col 2</td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+
+    <style>
+      #clip .clip-ex {
+        clip: rect(0px, 100px, 100px, 0px);
+      }
+    </style>
+    <div id="clip">
+      <h3>Clip</h3>
+      <h3>Usage</h3>
+      <pre>clip: auto | rect(top, right, bottom, left) | initial | inherit;</pre>
+      <p>This property allows visual elements to be clipped to specific bounds.</p>
+      <h3>Example</h3>
+      <pre>.clip-ex { clip: rect(0px, 50px, 50px, 0px); }</pre>
+      <img src="casper_transparent.gif" height="300px" width="300px" alt="Casper" class="clip-ex"/>
+    </div>
+    <hr>
+
+    <div id="empty-cells">
+      <h3>Empty Cells</h3>
+      <h3>Usage</h3>
+      <pre>empty-cells: show | hide | initial | inherit;</pre>
+      <p></p>
+      <h3>Example</h3>
+      empty-cells:
+      <input type="radio" name="empty-cells-opt" onclick="changeEmptyCells('show')"/>show
+      <input type="radio" name="empty-cells-opt" onclick="changeEmptyCells('hide')"/>hide
+      <input type="radio" name="empty-cells-opt" onclick="changeEmptyCells('initial')" checked/>initial
+      <table class="empty-cells-ex table-ex">
+        <tr>
+          <td>Row 1, Col 1</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Row 2, Col 1</td>
+          <td>Row 2, Col 2</td>
+        </tr>
+      </table>
+    </div>
+    <hr>
+
+    <div id="direction">
+      <h3>Direction</h3>
+      <h3>Usage</h3>
+      <pre>direction: ltr | rtl | initial | inherit;</pre>
+      <p>This property specifies the direction that the text is printed.</p>
+      <h3>Example</h3>
+      direction:
+      <input type="radio" name="direction-opt" onclick="changeDirection('ltr')"/>ltr
+      <input type="radio" name="direction-opt" onclick="changeDirection('rtl')"/>rtl
+      <input type="radio" name="direction-opt" onclick="changeDirection('initial')" checked/>initial
+      <p class="direction-ex">This is a direction test!</p>
+    </div>
+    <hr>
+
+    <style>
+      #cursor span {
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        border: 1px solid black;
+        margin-bottom: 5px;
+      }
+
+      #cursor .auto:hover {
+        cursor: auto;
+      }
+
+      #cursor .crosshair:hover {
+        cursor: crosshair;
+      }
+
+      #cursor .default:hover {
+        cursor: default;
+      }
+
+      #cursor .e-resize:hover {
+        cursor: e-resize;
+      }
+
+      #cursor .grab:hover {
+        cursor: grab;
+      }
+
+      #cursor .help:hover {
+        cursor: help;
+      }
+
+      #cursor .move:hover {
+        cursor: move;
+      }
+
+      #cursor .n-resize:hover {
+        cursor: n-resize;
+      }
+
+      #cursor .ne-resize:hover {
+        cursor: ne-resize;
+      }
+
+      #cursor .nw-resize:hover {
+        cursor: nw-resize;
+      }
+
+      #cursor .pointer:hover {
+        cursor: pointer;
+      }
+      #cursor .progress:hover {
+        cursor: progress;
+      }
+
+      #cursor .s-resize:hover {
+        cursor: s-resize;
+      }
+      #cursor .se-resize:hover {
+        cursor: se-resize;
+      }
+      #cursor .sw-resize:hover {
+        cursor: sw-resize;
+      }
+      #cursor .text:hover {
+        cursor: text;
+      }
+      #cursor .w-resize:hover {
+        cursor: w-resize;
+      }
+      #cursor .wait:hover {
+        cursor: wait;
+      }
+      #cursor .not-allowed:hover {
+        cursor: not-allowed;
+      }
+
+      #cursor .no-drop:hover {
+        cursor: no-drop;
+      }
+    </style>
+    <div id="cursor">
+      <h3>Cursor</h3>
+      <h3>Usage</h3>
+      <pre>cursor: auto | crosshair | default | e-resize | grab | help | move | n-resize | ne-resize | nw-resize | pointer | progress | s-resize | se-resize | sw-resize | text |
+        w-resize | wait | not-allowed | no-drop;</pre>
+      <p>This property sets the look of the mouse cursor.</p>
+      <h3>Example</h3>
+      <p>Hover over each box to see how the cursor changes</p>
+      <span class="auto">auto</span>
+      <span class="crosshair">crosshair</span>
+      <span class="default">default</span>
+      <span class="e-resize">e-resize</span>
+      <span class="grab">grab</span>
+      <span class="help">help</span>
+      <span class="n-resize">n-resize</span>
+      <span class="ne-resize">ne-resize</span>
+      <span class="nw-resize">nw-resize</span>
+      <span class="pointer">pointer</span>
+      <span class="progress">progress</span>
+      <span class="s-resize">s-resize</span>
+      <span class="se-resize">se-resize</span>
+      <span class="sw-resize">sw-resize</span>
+      <span class="text">text</span>
+      <span class="w-resize">w-resize</span>
+      <span class="wait">wait</span>
+      <span class="not-allowed">not-allowed</span>
+      <span class="no-drop">no-drop</span>
+    </div>
+    <hr>
+
+    <style>
+      #focus .focus-ex:focus {
+        outline: none;
+        border: 2px dashed green;
+      }
+    </style>
+    <div id="focus">
+      <h3>:focus</h3>
+      <h3>Usage</h3>
+      <pre>[CSS SELECTOR]:focus { CSS }</pre>
+      <p>An addition to the CSS Selector that allows the rule to only apply when the original CSS Selector is in focus.</p>
+      <h3>Example</h3>
+      <input type="text" placeholder="focus me!" class="focus-ex"/>
+    </div>
+    <hr>
+
+    <style>
+      #hover .hover-ex:hover {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+    <div id="hover">
+      <h3>:hover</h3>
+      <h3>Usage</h3>
+      <pre>[CSS SELECTOR]:hover { CSS }</pre>
+      <p>An addition to the CSS Selector that allows the rule to only apply when the mouse is hovered over the original CSS Selector.</p>
+      <h3>Example</h3>
+      <pre>#hover .hover-ex:hover { color: red; font-weight: bold; }</pre>
+      <p class="hover-ex">The CSS properties of this paragraph will change if you hover over me!</p>
+    </div>
+    <hr>
+
+    <style>
+      #first-letter .child::first-letter {
+        font-size: 20px;
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+    <div id="first-letter">
+      <h3>::first-letter</h3>
+      <h3>Usage</h3>
+      <pre>[CSS SELECTOR]::first-letter { CSS }</pre>
+      <p>An addition to the CSS Selector that allows the rule to target only the first letter of the original CSS Selector.</p>
+      <h3>Example</h3>
+      <pre>.child::first-letter { font-size: 20px; color: red; font-weight: bold; }</pre>
+      <p class="child">Child 1</p>
+      <p class="child">Child 2</p>
+      <p class="child">Child 3</p>
+      <p class="child">Child 4</p>
+    </div>
+    <hr>
+
+    <style>
+      #nth-child p:nth-child(2n+1) {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+    <div id="nth-child">
+      <h3>:nth-child</h3>
+      <h3>Usage</h3>
+      <pre>[CSS SELECTOR]:nth-child(number | odd | even | formula) { CSS }</pre>
+      <p>An addition to the CSS Selector that allows the rule to target a specific child of the original CSS Selector.</p>
+      <h3>Example</h3>
+      <pre>.child:nth-child(2n+1) { color: red; font-weight: bold; }</pre>
+      <p>Child 1</p>
+      <p>Child 2</p>
+      <p>Child 3</p>
+      <p>Child 4</p>
+    </div>
+    <hr>
+
+    <style>
+      #last-child p:last-child {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+    <div id="last-child">
+      <h3>:last-child</h3>
+      <h3>Usage</h3>
+      <pre>[CSS SELECTOR]:last-child { CSS }</pre>
+      <p>An addition to the CSS Selector that allows the rule to target only the last child of the original CSS Selector.</p>
+      <h3>Example</h3>
+      <pre>.child:last-child { color: red; font-weight: bold; }</pre>
+      <p>Child 1</p>
+      <p>Child 2</p>
+      <p>Child 3</p>
+      <p>Child 4</p>
     </div>
     <hr>
   </body>
